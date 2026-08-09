@@ -22,8 +22,8 @@ final class MGD_AI_Image_Labels_Plugin_Presentation {
 
 	private const WEBSITE_URL       = 'https://michael-gahn.de/';
 	private const SUPPORT_URL       = 'https://michael-gahn.de/support/';
-	private const DOCUMENTATION_URL = 'https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki';
-	private const REPOSITORY_URL    = 'https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels';
+	private const DOCUMENTATION_URL = 'https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/wiki';
+	private const REPOSITORY_URL    = 'https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress';
 	private const PLUGIN_SLUG       = 'mgd-ai-image-labels';
 
 	/** Registriert ausschließlich die WordPress-Pluginlisten-Erweiterung. */

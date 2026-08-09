@@ -22,7 +22,7 @@ final class MGD_AI_Image_Labels_GitHub_Updater {
 	/**
 	 * Öffentlicher, fest verdrahteter Endpunkt für den neuesten stabilen Release.
 	 */
-	private const RELEASE_ENDPOINT = 'https://api.github.com/repos/MichaelGahnDESIGN/MGD-AI-Image-Labels/releases/latest';
+	private const RELEASE_ENDPOINT = 'https://api.github.com/repos/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/releases/latest';
 
 	/**
 	 * Eindeutiger Plugin-Slug für WordPress und die Update-Informationen.
@@ -103,7 +103,7 @@ final class MGD_AI_Image_Labels_GitHub_Updater {
 			'slug'        => self::PLUGIN_SLUG,
 			'plugin'      => $plugin_file,
 			'new_version' => $version,
-			'url'         => 'https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels',
+			'url'         => 'https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress',
 			'package'     => $package,
 			'tested'      => '6.0',
 			'requires'    => '6.0',
@@ -188,7 +188,7 @@ final class MGD_AI_Image_Labels_GitHub_Updater {
 			'requires_php'  => '8.1',
 			'author'        => '<a href="https://michael-gahn.de/" target="_blank" rel="noopener noreferrer">Michael Gahn DESIGN</a>',
 			'author_profile'=> 'https://michael-gahn.de/',
-			'homepage'      => 'https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels',
+			'homepage'      => 'https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress',
 			'support_url'   => 'https://michael-gahn.de/support/',
 			'download_link' => $package,
 			'icons'         => $branding['icons'],
@@ -210,7 +210,7 @@ final class MGD_AI_Image_Labels_GitHub_Updater {
 		return array(
 			'description' => '<h3>Transparente Bildkennzeichnung – direkt in der Mediathek</h3><p>MGD AI Kennzeichnung WordPress ergänzt WordPress um eine klare Auswahl für KI-bezogene Bilder. Für jedes Bild lassen sich Status, Position und eine kontraststarke Glas-Variante separat festlegen.</p><h4>Das Plugin bietet</h4><ul><li>fünf eindeutige Kennzeichnungsarten – von „Keine KI“ bis „Deepfake / täuschend echt“;</li><li>eine dezente, barrierefreundliche Ausgabe mit wählbarer Position;</li><li>helle, dunkle oder automatische Glas-Optik;</li><li>Deutsch, Englisch oder automatische Sprachwahl;</li><li>eine Speicherung direkt aus den Anhang-Details der Mediathek;</li><li>eine lokale Ausgabe ohne externe Skripte oder Tracking.</li></ul><p><a href="https://michael-gahn.de/" target="_blank" rel="noopener noreferrer">Michael Gahn DESIGN besuchen</a> · <a href="https://michael-gahn.de/support/" target="_blank" rel="noopener noreferrer">Support öffnen</a></p>',
 			'installation' => '<h3>Installation und erster Einsatz</h3><ol><li>Die ZIP-Datei unter <strong>Plugins → Installieren → Plugin hochladen</strong> auswählen und aktivieren.</li><li>In der <strong>Mediathek</strong> ein Bild öffnen.</li><li>Unter <strong>KI-Kennzeichnung</strong> den passenden Status, die Position und die Glas-Variante wählen.</li><li><strong>Kennzeichnung speichern</strong> wählen und die Seite mit dem Bild im Frontend prüfen.</li></ol><p>Das Plugin verändert keine Bilddateien. Es speichert nur die gewählte Kennzeichnungs-Information als geschützte WordPress-Anhang-Metadaten.</p>',
-			'faq' => '<h3>Häufige Fragen</h3><h4>Warum sehe ich kein Label?</h4><p>Prüfe zuerst, ob für genau dieses Bild ein Status außer „Keine KI“ gespeichert wurde. Leere ggf. den Seiten- und Browser-Cache.</p><h4>Wird mein Bild verändert?</h4><p>Nein. Das Label wird im Frontend ergänzend ausgegeben; die Originaldatei bleibt unverändert.</p><h4>Kann ich die Position pro Bild wählen?</h4><p>Ja. Oben links, oben rechts, unten links und unten rechts stehen pro Medien-Anhang zur Verfügung.</p><h4>Wo erhalte ich Hilfe?</h4><p><a href="https://michael-gahn.de/support/" target="_blank" rel="noopener noreferrer">Support bei Michael Gahn DESIGN</a> sowie die <a href="https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki" target="_blank" rel="noopener noreferrer">Dokumentation im Wiki</a> helfen weiter.</p>',
+			'faq' => '<h3>Häufige Fragen</h3><h4>Warum sehe ich kein Label?</h4><p>Prüfe zuerst, ob für genau dieses Bild ein Status außer „Keine KI“ gespeichert wurde. Leere ggf. den Seiten- und Browser-Cache.</p><h4>Wird mein Bild verändert?</h4><p>Nein. Das Label wird im Frontend ergänzend ausgegeben; die Originaldatei bleibt unverändert.</p><h4>Kann ich die Position pro Bild wählen?</h4><p>Ja. Oben links, oben rechts, unten links und unten rechts stehen pro Medien-Anhang zur Verfügung.</p><h4>Wo erhalte ich Hilfe?</h4><p><a href="https://michael-gahn.de/support/" target="_blank" rel="noopener noreferrer">Support bei Michael Gahn DESIGN</a> sowie die <a href="https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/wiki" target="_blank" rel="noopener noreferrer">Dokumentation im Wiki</a> helfen weiter.</p>',
 			'changelog' => '<h3>Änderungsprotokoll</h3><h4>1.0.1</h4><ul><li>Sichtbarer Produktname auf MGD AI Kennzeichnung WordPress aktualisiert; technischer Plugin-Slug bleibt für reguläre Updates unverändert.</li><li>Deutsch, Englisch und automatische Sprachwahl für alle sichtbaren Labels ergänzt.</li><li>Verwaltung mit lokaler Live-Vorschau und neuem Dokumentationsbereich überarbeitet.</li></ul><h4>0.6.10</h4><ul><li>Mehrere gekennzeichnete Bilder werden im Frontend ohne verschachtelte Wrapper oder Verarbeitungsschleife ausgegeben.</li><li>Der MutationObserver ignoriert die vom Plugin selbst erzeugten Kennzeichnungs-Knoten.</li></ul><h4>0.6.9</h4><ul><li>Die GitHub-Update-Prüfung akzeptiert ausschließlich sichere, fest geprüfte Release-Pakete.</li><li>Öffentliche Dokumentation, Sicherheitsrichtlinie und Wiki wurden vervollständigt.</li></ul>',
 		);
 	}
@@ -342,7 +342,7 @@ final class MGD_AI_Image_Labels_GitHub_Updater {
 		}
 
 		$path                       = isset( $parts['path'] ) && is_string( $parts['path'] ) ? $parts['path'] : '';
-		$expected_path_prefix       = '/MichaelGahnDESIGN/MGD-AI-Image-Labels/releases/download/';
+		$expected_path_prefix       = '/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/releases/download/';
 		$has_additional_url_details = isset( $parts['port'] ) || isset( $parts['user'] ) || isset( $parts['pass'] ) || isset( $parts['query'] ) || isset( $parts['fragment'] );
 
 		return 'https' === strtolower( (string) $parts['scheme'] )

@@ -2,6 +2,21 @@
 
 Alle wesentlichen Änderungen werden in diesem Dokument festgehalten. Versionen folgen dem Format `MAJOR.MINOR.PATCH`.
 
+## 1.0.2 – 9. August 2026
+
+### Geändert
+
+- Übergangsrelease für die sichere spätere Umbenennung des GitHub-Repositories
+  auf `MGD-AI-Kennzeichnung-WordPress`.
+- Der Update-Endpunkt, die Download-Prüfung und die sichtbaren GitHub-Links
+  zeigen auf den neuen Repository-Namen. Der technische Plugin-Slug und Ordner
+  `mgd-ai-image-labels` bleiben unverändert.
+
+### Wichtig
+
+- Installiere 1.0.2 noch über das bisherige Repository als normales
+  WordPress-Update. Erst danach darf das GitHub-Repository umbenannt werden.
+
 ## 1.0.1 – 9. August 2026
 
 ### Neu

@@ -240,6 +240,15 @@ git diff --check
 
 ## Releases und Updates
 
+### Repository-Umbenennung sicher vorbereiten
+
+Version **1.0.2** ist ein Übergangsrelease für die geplante Umbenennung des
+GitHub-Repositories in `MGD-AI-Kennzeichnung-WordPress`. Bestehende Websites
+aktualisieren 1.0.2 noch über die bisherige Adresse ganz normal in WordPress.
+Erst wenn die verwalteten Installationen diese Version verwenden, darf das
+Repository umbenannt werden. Der Plugin-Ordner `mgd-ai-image-labels`, die
+Metaschlüssel und alle Kennzeichnungswerte bleiben dabei unverändert.
+
 Jede Version erhält einen Git-Tag im Format `vX.Y.Z` und ein ZIP-Release, dessen oberster Ordner `mgd-ai-image-labels` heißt. WordPress erkennt neuere öffentliche GitHub-Releases im üblichen Plugin-Update-Zyklus und zeigt sie in **Dashboard → Aktualisierungen** beziehungsweise **Plugins** an. Das Release-Paket enthält nur die zur Laufzeit und Dokumentation erforderlichen Plugin-Dateien; Entwicklungs-Worktrees, Tests, lokale Visualisierungen, Archivdateien und Konfigurationsgeheimnisse gehören nicht hinein.
 
 Die Prüfung ruft höchstens alle zwölf Stunden ausschließlich die öffentliche GitHub-Release-API dieses Repositories auf. Sie benötigt keine Zugangsdaten und überträgt keine Bilder, Bildmetadaten, Besucher- oder Nutzerdaten. Ein Release wird nur angeboten, wenn die Version neuer ist und eine exakt passende ZIP-Datei über HTTPS, ohne abweichenden Port und aus dem festen Release-Pfad dieses Repositories bereitsteht. Bei Netzwerk- oder Validierungsfehlern bleibt WordPress beim bisherigen Stand und führt kein Update aus.
