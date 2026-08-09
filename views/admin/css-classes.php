@@ -7,11 +7,12 @@
 
 declare(strict_types=1);
 
+
 $label_classes = array(
-	'generated'           => 'AI GENERATED',
-	'partially-generated' => 'AI PARTIALLY GENERATED',
-	'modified'            => 'AI MODIFIED',
-	'deepfake'            => 'AI DEEPFAKE',
+	'generated'           => MGD_AI_Image_Labels_Label_Translations::get_label( 'generated' ),
+	'partially-generated' => MGD_AI_Image_Labels_Label_Translations::get_label( 'partially-generated' ),
+	'modified'            => MGD_AI_Image_Labels_Label_Translations::get_label( 'modified' ),
+	'deepfake'            => MGD_AI_Image_Labels_Label_Translations::get_label( 'deepfake' ),
 	'none'                => 'Keine Ausgabe (Keine KI)',
 );
 

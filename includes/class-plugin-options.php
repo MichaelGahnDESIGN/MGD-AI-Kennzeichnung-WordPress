@@ -29,6 +29,9 @@ final class MGD_AI_Image_Labels_Plugin_Options {
 	/** @var array<int, string> */
 	private const POSITIONS = array( 'top-left', 'top-right', 'bottom-left', 'bottom-right' );
 
+	/** @var array<int, string> Sichtbare Label-Ausgabe oder automatische WordPress-Sprache. */
+	private const LANGUAGES = array( 'auto', 'de', 'en' );
+
 	/**
 	 * Registriert genau eine Array-Option mit der zentralen Sanitization.
 	 */
@@ -63,6 +66,7 @@ final class MGD_AI_Image_Labels_Plugin_Options {
 			'blur'      => '10',
 			'theme'     => 'auto',
 			'position'  => 'bottom-right',
+			'language'  => 'auto',
 		);
 	}
 
@@ -109,6 +113,7 @@ final class MGD_AI_Image_Labels_Plugin_Options {
 			'blur'      => self::normalize_integer( $input['blur'] ?? null, 0, 24, $defaults['blur'] ),
 			'theme'     => self::normalize_choice( $input['theme'] ?? null, self::THEMES, $defaults['theme'] ),
 			'position'  => self::normalize_choice( $input['position'] ?? null, self::POSITIONS, $defaults['position'] ),
+			'language'  => self::normalize_choice( $input['language'] ?? null, self::LANGUAGES, $defaults['language'] ),
 		);
 	}
 

@@ -17,13 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 final class MGD_AI_Image_Labels_Image_Renderer {
 
-	/** @var array<string, string> */
-	private const LABELS = array(
-		'generated'           => 'AI GENERATED',
-		'partially-generated' => 'AI PARTIALLY GENERATED',
-		'modified'            => 'AI MODIFIED',
-		'deepfake'            => 'AI DEEPFAKE',
-	);
+	/** @var array<int, string> Ausschließlich diese redaktionell definierten Statuswerte sind zulässig. */
+	private const STATUSES = array( 'generated', 'partially-generated', 'modified', 'deepfake' );
 
 	/**
 	 * Registriert gezielt WordPress-Bildfilter und die lokale Stylesheet-Datei.
@@ -99,7 +94,7 @@ final class MGD_AI_Image_Labels_Image_Renderer {
 			}
 
 			$configuration = array(
-				'label'    => self::LABELS[ $status ],
+				'label'    => MGD_AI_Image_Labels_Label_Translations::get_label( $status ),
 				'position' => self::sanitize_value( $values['position'] ?? 'bottom-right', array( 'top-left', 'top-right', 'bottom-left', 'bottom-right' ), 'bottom-right' ),
 				'theme'    => self::sanitize_value( $values['theme'] ?? 'auto', array( 'auto', 'light', 'dark' ), 'auto' ),
 				'deepfake' => 'deepfake' === $status,
@@ -592,13 +587,14 @@ final class MGD_AI_Image_Labels_Image_Renderer {
 			'bottom-right'
 		);
 		$theme    = self::sanitize_value( $values['theme'] ?? 'auto', array( 'auto', 'light', 'dark' ), 'auto' );
-		$label    = self::LABELS[ $status ];
+		$label    = MGD_AI_Image_Labels_Label_Translations::get_label( $status );
 		$detail   = 'deepfake' === $status
 			? '<span class="screen-reader-text">Dieses Bild wurde künstlich erzeugt oder manipuliert und kann einen authentischen Eindruck erwecken.</span>'
 			: '';
 
 		return sprintf(
-			'<span class="mgd-ail-badge mgd-ail-position-%1$s mgd-ail-theme-%2$s" role="note"><span class="mgd-ail-badge__text">%3$s</span>%4$s</span>',
+			'<span class="mgd-ail-badge mgd-ail-status-%1$s mgd-ail-position-%2$s mgd-ail-theme-%3$s" role="note"><span class="mgd-ail-badge__text">%4$s</span>%5$s</span>',
+			self::escape_class( $status ),
 			self::escape_class( $position ),
 			self::escape_class( $theme ),
 			self::escape_text( $label ),
@@ -776,12 +772,12 @@ final class MGD_AI_Image_Labels_Image_Renderer {
 		$position = self::sanitize_value( $values['position'] ?? 'bottom-right', array( 'top-left', 'top-right', 'bottom-left', 'bottom-right' ), 'bottom-right' );
 		$theme    = self::sanitize_value( $values['theme'] ?? 'auto', array( 'auto', 'light', 'dark' ), 'auto' );
 		$badge    = $document->createElement( 'span' );
-		$badge->setAttribute( 'class', 'mgd-ail-badge mgd-ail-position-' . $position . ' mgd-ail-theme-' . $theme );
+		$badge->setAttribute( 'class', 'mgd-ail-badge mgd-ail-status-' . $status . ' mgd-ail-position-' . $position . ' mgd-ail-theme-' . $theme );
 		$badge->setAttribute( 'role', 'note' );
 
 		$text = $document->createElement( 'span' );
 		$text->setAttribute( 'class', 'mgd-ail-badge__text' );
-		$text->appendChild( $document->createTextNode( self::LABELS[ $status ] ) );
+		$text->appendChild( $document->createTextNode( MGD_AI_Image_Labels_Label_Translations::get_label( $status ) ) );
 		$badge->appendChild( $text );
 
 		if ( 'deepfake' === $status ) {
@@ -812,7 +808,7 @@ final class MGD_AI_Image_Labels_Image_Renderer {
 
 	/** @param mixed $value */
 	private static function sanitize_status( $value ): string {
-		return self::sanitize_value( $value, array_keys( self::LABELS ), 'none' );
+		return self::sanitize_value( $value, self::STATUSES, 'none' );
 	}
 
 	/** @param mixed $value @param array<int, string> $allowed */

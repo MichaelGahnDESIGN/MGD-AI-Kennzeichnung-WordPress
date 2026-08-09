@@ -27,6 +27,7 @@ final class MGD_AI_Image_Labels_Admin_Page {
 	/** @var array<string, string> Feste Reiter ohne frei ladbare Dateinamen. */
 	private const TABS = array(
 		'settings'      => 'Einstellungen',
+		'documentation' => 'Dokumentation',
 		'css-classes'   => 'CSS-Klassen',
 		'ai-philosophy' => 'AI-Philosophie',
 		'imprint'       => 'Impressum',
@@ -40,8 +41,8 @@ final class MGD_AI_Image_Labels_Admin_Page {
 	/** Fügt genau eine Verwaltungsseite unter „Medien“ hinzu. */
 	public static function register_media_page(): void {
 		add_media_page(
-			'KI-Bildkennzeichnung',
-			'KI-Bildkennzeichnung',
+			'MGD AI Kennzeichnung WordPress',
+			'AI Kennzeichnung',
 			'manage_options',
 			self::PAGE_SLUG,
 			array( self::class, 'render_page' )
@@ -72,9 +73,9 @@ final class MGD_AI_Image_Labels_Admin_Page {
 		}
 
 		?>
-		<div class="wrap">
-			<h1>MGD KI-Bildkennzeichnung</h1>
-			<p>Verwalte die globalen Standards und nutze die Kennzeichnungen nachvollziehbar in deinen WordPress- und Divi-Inhalten.</p>
+		<div class="wrap mgd-ail-admin-shell">
+			<h1>MGD AI Kennzeichnung WordPress</h1>
+			<p class="mgd-ail-admin-intro">Transparente Kennzeichnungen für KI-bezogene Bilder – lokal, barrierearm und passend für WordPress sowie Divi. Status, Position und Glas-Variante bleiben weiterhin pro Bild in der Mediathek steuerbar.</p>
 
 			<nav class="nav-tab-wrapper" aria-label="Plugin-Bereiche">
 				<?php foreach ( $tabs as $tab_slug => $tab_title ) : ?>

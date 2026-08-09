@@ -81,7 +81,7 @@ final class MGD_AI_Image_Labels_Plugin_Presentation {
 		return sprintf(
 			'<a href="%1$s" class="thickbox open-plugin-details-modal" aria-label="%2$s">%3$s</a>',
 			esc_url( $url ),
-			esc_attr( 'Details zu MGD KI-Bildkennzeichnung anzeigen' ),
+			esc_attr( 'Details zu MGD AI Kennzeichnung WordPress anzeigen' ),
 			esc_html( 'Details anzeigen' )
 		);
 	}

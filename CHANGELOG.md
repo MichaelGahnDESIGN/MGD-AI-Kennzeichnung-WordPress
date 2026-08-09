@@ -2,6 +2,23 @@
 
 Alle wesentlichen Änderungen werden in diesem Dokument festgehalten. Versionen folgen dem Format `MAJOR.MINOR.PATCH`.
 
+## 1.0.1 – 9. August 2026
+
+### Neu
+
+- Sichtbarer Produktname in **MGD AI Kennzeichnung WordPress** geändert. Der
+  technische Plugin-Ordner und Update-Slug bleiben unverändert, daher ist kein
+  Neuinstallieren erforderlich.
+- Ausgabe der Labels in **Automatisch**, **Deutsch** und **Englisch** ergänzt.
+  Die automatische Wahl folgt der WordPress-Sprache.
+- Überarbeitete Verwaltungsseite mit lokaler Live-Vorschau und eigenem
+  Dokumentationsreiter ergänzt.
+
+### Sicherheit und Datenschutz
+
+- Die Sprachwahl nutzt ausschließlich feste, lokale Texte. Sie sendet keine
+  Einstellungen, Bilddaten oder Besucherdaten an externe Dienste.
+
 ## 0.6.10 – 9. August 2026
 
 ### Behoben

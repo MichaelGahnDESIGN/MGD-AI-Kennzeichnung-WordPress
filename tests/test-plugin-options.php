@@ -99,6 +99,7 @@ $valid = MGD_AI_Image_Labels_Plugin_Options::sanitize_options(
 		'blur'      => 24,
 		'theme'     => 'dark',
 		'position'  => 'top-left',
+		'language'  => 'en',
 	)
 );
 
@@ -106,6 +107,10 @@ mgd_ail_options_assert_same( '24', $valid['font_size'], 'Eine zulässige Ganzzah
 mgd_ail_options_assert_same( '0', $valid['offset'], 'Die zulässige Untergrenze bleibt erhalten.' );
 mgd_ail_options_assert_same( 'dark', $valid['theme'], 'Eine zulässige Glasvariante bleibt erhalten.' );
 mgd_ail_options_assert_same( 'top-left', $valid['position'], 'Eine zulässige Position bleibt erhalten.' );
+mgd_ail_options_assert_same( 'en', $valid['language'], 'Eine zulässige Ausgabesprache bleibt erhalten.' );
+
+$invalid_language = MGD_AI_Image_Labels_Plugin_Options::sanitize_options( array( 'language' => 'fr' ) );
+mgd_ail_options_assert_same( 'auto', $invalid_language['language'], 'Eine nicht unterstützte Sprache fällt sicher auf Automatisch zurück.' );
 
 $GLOBALS['mgd_ail_test_display_options'] = array(
 	'font_size' => '12; color: red',

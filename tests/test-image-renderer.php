@@ -18,6 +18,15 @@ function is_admin(): bool {
 	return ! empty( $GLOBALS['mgd_ail_test_is_admin'] );
 }
 
+/** @return array<string, string> */
+function get_option( string $option, $default = false ): array {
+	return is_array( $default ) ? $default : array();
+}
+
+function determine_locale(): string {
+	return 'en_US';
+}
+
 $GLOBALS['mgd_ail_test_is_admin'] = false;
 
 /**
@@ -113,6 +122,8 @@ $GLOBALS['mgd_ail_test_meta'] = array(
 );
 
 require_once dirname( __DIR__ ) . '/includes/class-attachment-meta.php';
+require_once dirname( __DIR__ ) . '/includes/class-plugin-options.php';
+require_once dirname( __DIR__ ) . '/includes/class-label-translations.php';
 require_once dirname( __DIR__ ) . '/includes/class-image-renderer.php';
 
 /** @param mixed $expected @param mixed $actual */

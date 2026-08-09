@@ -13,6 +13,7 @@ define( 'MGD_AI_IMAGE_LABELS_DIR', dirname( __DIR__ ) . '/' );
 
 $required_views = array(
 	'views/admin/settings.php',
+	'views/admin/documentation.php',
 	'views/admin/css-classes.php',
 	'views/admin/ai-philosophy.php',
 	'views/admin/imprint.php',
@@ -138,6 +139,7 @@ function checked( string $checked, string $current, bool $display = true ): stri
 }
 
 require_once dirname( __DIR__ ) . '/includes/class-plugin-options.php';
+require_once dirname( __DIR__ ) . '/includes/class-label-translations.php';
 require_once dirname( __DIR__ ) . '/includes/class-ai-philosophy.php';
 require_once dirname( __DIR__ ) . '/includes/class-admin-page.php';
 
@@ -155,7 +157,7 @@ function mgd_ail_admin_assert_contains( string $needle, string $haystack, string
 
 MGD_AI_Image_Labels_Admin_Page::register();
 call_user_func( $GLOBALS['mgd_ail_admin_page_test']['actions']['admin_menu'] );
-mgd_ail_admin_assert_same( 'KI-Bildkennzeichnung', $GLOBALS['mgd_ail_admin_page_test']['page']['page_title'], 'Die zentrale Seite verwendet den vereinbarten Seitentitel.' );
+mgd_ail_admin_assert_same( 'MGD AI Kennzeichnung WordPress', $GLOBALS['mgd_ail_admin_page_test']['page']['page_title'], 'Die zentrale Seite verwendet den vereinbarten Seitentitel.' );
 mgd_ail_admin_assert_same( 'mgd-ai-image-labels', $GLOBALS['mgd_ail_admin_page_test']['page']['menu_slug'], 'Die Verwaltungsseite verwendet einen festen, konfliktarmen Medien-Slug.' );
 
 $_GET['tab'] = '<script>unbekannt</script>';
@@ -184,6 +186,12 @@ ob_start();
 MGD_AI_Image_Labels_Admin_Page::render_page();
 $imprint_page = (string) ob_get_clean();
 mgd_ail_admin_assert_contains( 'Michael Gahn DESIGN', $imprint_page, 'Das Impressum nennt den Plugin-Herausgeber.' );
+
+$_GET['tab'] = 'documentation';
+ob_start();
+MGD_AI_Image_Labels_Admin_Page::render_page();
+$documentation_page = (string) ob_get_clean();
+mgd_ail_admin_assert_contains( 'Dokumentation', $documentation_page, 'Der Dokumentationsreiter ist als feste lokale Ansicht erreichbar.' );
 
 $plugin_source = file_get_contents( dirname( __DIR__ ) . '/includes/class-plugin.php' );
 if ( false === $plugin_source ) {

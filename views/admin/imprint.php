@@ -7,9 +7,9 @@
 
 declare(strict_types=1);
 ?>
-<section class="mgd-ail-admin-section">
+<section class="mgd-ail-admin-card">
 	<h2>Impressum &amp; Hilfe</h2>
-	<p><strong>MGD KI-Bildkennzeichnung</strong> wird von Michael Gahn DESIGN entwickelt und gepflegt.</p>
+	<p><strong>MGD AI Kennzeichnung WordPress</strong> wird von Michael Gahn DESIGN entwickelt und gepflegt.</p>
 	<ul>
 		<li><a href="https://michael-gahn.de/" target="_blank" rel="noopener noreferrer">Michael Gahn DESIGN</a></li>
 		<li><a href="https://michael-gahn.de/support/" target="_blank" rel="noopener noreferrer">Support anfragen</a></li>

@@ -49,6 +49,15 @@ function esc_html( string $value ): string {
 	return htmlspecialchars( $value, ENT_QUOTES, 'UTF-8' );
 }
 
+/** @return array<string, string> */
+function get_option( string $option, $default = false ): array {
+	return is_array( $default ) ? $default : array();
+}
+
+function determine_locale(): string {
+	return 'en_US';
+}
+
 /**
  * Liefert ausschließlich kontrollierte Metadaten für die Test-Anhänge.
  *
@@ -85,6 +94,8 @@ if ( ! is_file( $shortcode_file ) ) {
 }
 
 require_once dirname( __DIR__ ) . '/includes/class-attachment-meta.php';
+require_once dirname( __DIR__ ) . '/includes/class-plugin-options.php';
+require_once dirname( __DIR__ ) . '/includes/class-label-translations.php';
 require_once dirname( __DIR__ ) . '/includes/class-image-renderer.php';
 require_once $shortcode_file;
 

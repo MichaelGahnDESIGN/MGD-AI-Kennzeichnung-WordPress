@@ -1,4 +1,4 @@
-# MGD KI-Bildkennzeichnung
+# MGD AI Kennzeichnung WordPress
 
 Ein schlankes WordPress-Plugin für die transparente, barrierefreie Kennzeichnung von Bildern, bei deren Erstellung oder Bearbeitung KI beteiligt war.
 
@@ -35,7 +35,9 @@ dokumentiert zusätzlich Umfang, Ergebnis und Grenzen der aktuellen Prüfung.
 - Barrierefreie Semantik; Deepfake-Hinweise enthalten einen erweiterten Screenreader-Text
 - Unterstützung für WordPress-Bilder, Beitragsbilder sowie Divi-5- und klassische Divi-Bildmodule
 - Eigener Speichern-Button für eine nachvollziehbare Medienbearbeitung – auch im separaten Medienfenster des Divi-5-Builders
-- Zentrale Verwaltung unter **Medien → KI-Bildkennzeichnung** mit vier klar getrennten Bereichen
+- Zentrale Verwaltung unter **Medien → AI Kennzeichnung** mit Einstellungen, Dokumentation, CSS-Klassen, AI-Philosophie und Impressum
+- Drei Sprachausgaben für sichtbare Labels: Automatisch (WordPress-Sprache), Deutsch und Englisch
+- Lokale Live-Vorschau der globalen Design- und Sprachwerte direkt in der Plugin-Verwaltung
 - Globale, streng validierte Standards für Schriftgröße, Abstände, Radius, Glasunschärfe, Standard-Position und Glas-Variante
 - Sicherer Hintergrundbild-Shortcode für Divi-Container: `[mgd_ai_label]`
 - Redaktionell pflegbare AI-Philosophie mit Shortcode und vorsichtiger, optionaler Seitenerstellung
@@ -52,7 +54,7 @@ dokumentiert zusätzlich Umfang, Ergebnis und Grenzen der aktuellen Prüfung.
 ## Installation
 
 1. Lade unter **Plugins → Installieren → Plugin hochladen** eine Release-ZIP hoch.
-2. Aktiviere **MGD KI-Bildkennzeichnung**.
+2. Aktiviere **MGD AI Kennzeichnung WordPress**.
 3. Öffne unter **Medien → Mediathek** ein Bild in den Anhang-Details.
 4. Wähle bei **KI-Kennzeichnung** den passenden Status, die Position und die Glas-Variante.
 5. Klicke auf **Kennzeichnung speichern**.
@@ -70,7 +72,7 @@ Die Vorschau im geöffneten Medienmodal reagiert direkt auf Status, Ecke und Gla
 
 Die Vorschau verwendet dieselben Label-Klassen und proportionalen Innenabstände wie die Frontend-Ausgabe. Dadurch bleibt sie bei unterschiedlicher Modalgröße auf der sichtbaren Bildfläche in der gewählten Ecke. Sie ist eine verlässliche Stilvorschau; das finale Layout hängt zusätzlich vom jeweiligen Theme, der ausgegebenen Bildgröße und gegebenenfalls dessen CSS ab.
 
-## Kennzeichnungsarten
+## Kennzeichnungsarten und Sprache
 
 | Auswahl | Sichtbares Label | Zweck |
 | --- | --- | --- |
@@ -79,6 +81,13 @@ Die Vorschau verwendet dieselben Label-Klassen und proportionalen Innenabstände
 | Teilweise KI generiert | `AI PARTIALLY GENERATED` | Bild enthält erkennbare, KI-generierte Bestandteile |
 | Mit KI bearbeitet | `AI MODIFIED` | Bestehendes Bild wurde mit KI wesentlich verändert |
 | Deepfake / täuschend echt | `AI DEEPFAKE` | Bild kann einen authentischen Eindruck erwecken |
+
+Unter **Medien → AI Kennzeichnung → Einstellungen** kann die sichtbare Ausgabe
+auf **Automatisch**, **Deutsch** oder **Englisch** gesetzt werden. Im Modus
+„Automatisch“ orientiert sich das Plugin an der WordPress-Sprache: `de_*`
+liefert deutsche Labels, alle anderen Sprachen englische Labels. Der technische
+Status eines Bildes bleibt dabei unverändert; ein Sprachwechsel benötigt keine
+Migration und verändert keine Bilddatei.
 
 ## Gestaltung und Barrierefreiheit
 
@@ -93,7 +102,7 @@ Die Styles liegen vollständig lokal in `assets/css/frontend.css` und können in
 
 ### Globale Standards und individuelle Bildwerte
 
-Unter **Medien → KI-Bildkennzeichnung → Einstellungen** stehen globale Ausgangswerte für alle Labels zur Verfügung:
+Unter **Medien → AI Kennzeichnung → Einstellungen** stehen globale Ausgangswerte für alle Labels zur Verfügung:
 
 - Schriftgröße, Außen- und Innenabstände sowie Eckenradius
 - Glasunschärfe
@@ -139,11 +148,12 @@ Beispiel für ein individuelles, per CSS ansprechbares Hintergrund-Label:
 
 ## Zentrale Plugin-Verwaltung
 
-Die Verwaltung liegt unter **Medien → KI-Bildkennzeichnung**. Sie verwendet die WordPress-Standardoberfläche und ist auf Administratorinnen und Administratoren mit der Berechtigung `manage_options` begrenzt.
+Die Verwaltung liegt unter **Medien → AI Kennzeichnung**. Sie verwendet die WordPress-Standardoberfläche und ist auf Administratorinnen und Administratoren mit der Berechtigung `manage_options` begrenzt.
 
 | Reiter | Zweck |
 | --- | --- |
 | **Einstellungen** | Globale Standards festlegen und mit einer lokalen Vorschau kontrollieren. |
+| **Dokumentation** | Direkte Anleitung für Mediathek, Sprache, Shortcodes, Caches und Support. |
 | **CSS-Klassen** | Klassen und Hintergrund-Shortcode für Divi-Container kopieren. |
 | **AI-Philosophie** | Transparenztext redaktionell pflegen und als `[mgd_ai_philosophy]` ausgeben. |
 | **Impressum** | Lokale Projekt-, Support- und Quellcode-Links finden. |
@@ -189,7 +199,10 @@ assets/
   js/media-save.js                 Speichern im Medien-Dialog
   js/media-preview.js              Nicht speichernde Vorschau im Medienmodal
   css/media-preview.css            Gestaltung der Medienvorschau
+  css/admin-settings.css            Lokale Gestaltung der Verwaltungsseite
+  js/settings-preview.js           Nicht speichernde Vorschau der globalen Standards
 includes/
+  class-admin-assets.php            Gezieltes Laden der Verwaltungs-Assets
   class-admin-page.php              Controller der zentralen Medien-Verwaltung
   class-ai-philosophy.php           AI-Philosophie, Shortcode und sichere Seitenerstellung
   class-attachment-meta.php        Validierung und Zugriff auf Anhangsmetadaten
@@ -200,8 +213,9 @@ includes/
   class-plugin.php                  Plugin-Initialisierung
   class-plugin-presentation.php     Service-Links und native Detailansicht
   class-plugin-options.php          Streng validierte globale Label-Standards
+  class-label-translations.php      Zentrale deutsche und englische Label-Texte
   class-shortcodes.php               Hintergrund-Shortcode für Divi-Container
-views/admin/                        Getrennte Ansichten für die vier Verwaltungsreiter
+views/admin/                        Getrennte Ansichten für alle Verwaltungsreiter
 tests/                              Eigenständige PHP-Tests ohne WordPress-Installation
 mgd-ai-image-labels.php            Plugin-Header und Startpunkt
 ```
