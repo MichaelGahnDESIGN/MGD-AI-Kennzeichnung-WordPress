@@ -2,10 +2,8 @@
 /**
  * Sichere Auswertung öffentlicher GitHub-Releases für WordPress-Updates.
  *
- * Die Klasse enthält zunächst bewusst nur reine, testbare Validierungslogik.
- * Netzwerk- und WordPress-Hooks werden erst in einem getrennten Schritt ergänzt.
- * Dadurch kann eine manipulierte oder unvollständige API-Antwort nie als Update
- * an WordPress weitergereicht werden.
+ * Release-Antworten werden vor der Übergabe an WordPress auf Version,
+ * Paketname, Download-Domain und Repository-Pfad geprüft.
  *
  * @package MGD_AI_Image_Labels
  */
@@ -334,7 +332,7 @@ final class MGD_AI_Image_Labels_GitHub_Updater {
 	}
 
 	/**
-	 * Begrenzt Update-Pakete auf HTTPS-Downloads von GitHub.
+	 * Begrenzt Update-Pakete auf HTTPS-Downloads aus dem eigenen Repository.
 	 */
 	private static function is_expected_download_url( string $url ): bool {
 		$parts = parse_url( $url );
@@ -343,7 +341,13 @@ final class MGD_AI_Image_Labels_GitHub_Updater {
 			return false;
 		}
 
+		$path                       = isset( $parts['path'] ) && is_string( $parts['path'] ) ? $parts['path'] : '';
+		$expected_path_prefix       = '/MichaelGahnDESIGN/MGD-AI-Image-Labels/releases/download/';
+		$has_additional_url_details = isset( $parts['port'] ) || isset( $parts['user'] ) || isset( $parts['pass'] ) || isset( $parts['query'] ) || isset( $parts['fragment'] );
+
 		return 'https' === strtolower( (string) $parts['scheme'] )
-			&& 0 === strcasecmp( self::DOWNLOAD_HOST, (string) $parts['host'] );
+			&& 0 === strcasecmp( self::DOWNLOAD_HOST, (string) $parts['host'] )
+			&& ! $has_additional_url_details
+			&& 0 === strpos( $path, $expected_path_prefix );
 	}
 }

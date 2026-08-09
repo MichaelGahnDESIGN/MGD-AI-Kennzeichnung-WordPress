@@ -1,15 +1,51 @@
 # Sicherheitsrichtlinie
 
-Bitte melde Sicherheitslücken nicht öffentlich in einem GitHub-Issue. Sende eine kurze Beschreibung, eine reproduzierbare Testanleitung und die betroffene Version vertraulich an Michael Gahn DESIGN.
+## Sicherheitslücke vertraulich melden
 
-Keine Zugangsdaten, Tokens, vollständigen Datenbankauszüge oder personenbezogenen Daten mitsenden.
+Bitte veröffentliche Sicherheitslücken nicht in einem GitHub-Issue, Pull
+Request oder Screenshot. Nutze stattdessen das
+[Support-Formular von Michael Gahn DESIGN](https://michael-gahn.de/support/)
+und beschreibe:
 
-## GitHub-Updates
+- die betroffene Plugin-Version;
+- die Voraussetzungen und reproduzierbaren Schritte;
+- die erwartete und die tatsächliche Auswirkung;
+- gegebenenfalls einen möglichst kleinen, nicht destruktiven Proof of Concept.
 
-Das Plugin verwendet für Update-Hinweise ausschließlich die öffentliche GitHub-Release-API des eigenen Repositories. Es enthält keine GitHub-Tokens und sendet keine Medien-, Besucher- oder Nutzerdaten. Vor einem Update werden Versionsnummer, Download-Domain und Name der Release-ZIP geprüft. Eine nicht passende oder nicht erreichbare Antwort führt zu keinem Update-Hinweis.
+Sende keine Zugangsdaten, API-Schlüssel, Tokens, vollständigen
+Datenbankauszüge, Backups, privaten Bild-URLs oder personenbezogenen Daten.
+Wenn eine Meldung vertrauliche Details braucht, nenne zunächst nur einen
+sicheren Rückkanal über das Formular.
 
-## Branding und Detailansicht
+## Unterstützter Stand
 
-Icon, Banner und die optionale Dokumentations-Animation liegen vollständig im Plugin-Paket. Im WordPress-Backend werden dafür keine Fremdhosts, Webfonts, Analysewerkzeuge oder Drittanbieter-Skripte nachgeladen. Die Detailansicht enthält ausschließlich statische, lokal ausgelieferte Hilfetexte.
+Sicherheitskorrekturen werden für den aktuellen veröffentlichten
+Release-Zweig bereitgestellt. Installationen sollten die neueste stabile
+Version des Plugins sowie unterstützte WordPress- und PHP-Versionen verwenden.
 
-Die wenigen externen Service-Links führen nur auf die Website, den Support, das öffentliche Repository und das öffentliche Wiki von Michael Gahn DESIGN. Sie öffnen in einem separaten Tab mit `noopener noreferrer`, damit der neue Tab keinen Zugriff auf das aufrufende WordPress-Backend erhält.
+## Umgang mit einer Meldung
+
+1. Die Meldung wird auf Nachvollziehbarkeit und Auswirkungen geprüft.
+2. Bei Bestätigung wird eine Korrektur mit Testfall vorbereitet.
+3. Die Korrektur erscheint als versioniertes GitHub-Release.
+4. Öffentliche Details werden erst veröffentlicht, wenn eine aktualisierte
+   Version verfügbar ist oder ein verantwortbarer Zeitpunkt abgestimmt wurde.
+
+## Datenschutz und Update-Prüfung
+
+Das Plugin speichert seine Kennzeichnungswerte ausschließlich als
+WordPress-Anhang-Metadaten auf der eigenen Website. Es überträgt weder Bilder,
+Anhang-Metadaten, Besucher- noch Nutzerdaten an externe Dienste.
+
+Für Update-Hinweise wird ausschließlich die öffentliche GitHub-Release-API
+des eigenen Repositories abgefragt. Das Plugin enthält dafür keine
+GitHub-Tokens. Vor einem Update werden Versionsnummer, Paketname, HTTPS,
+Download-Domain und Repository-Pfad geprüft. Eine nicht passende oder nicht
+erreichbare Antwort erzeugt keinen Update-Hinweis.
+
+## Lokale Assets und externe Links
+
+Icon, Banner, Vorschau-CSS und JavaScript liegen im Plugin-Paket. Das
+WordPress-Backend lädt dafür keine Fremdhosts, Webfonts, Analysewerkzeuge oder
+Drittanbieter-Skripte. Externe Service-Links öffnen mit `noopener noreferrer`,
+damit ein neuer Tab keinen Zugriff auf das aufrufende WordPress-Backend erhält.

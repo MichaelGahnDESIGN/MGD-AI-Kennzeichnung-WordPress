@@ -63,6 +63,36 @@ mgd_ail_updater_assert_same(
 	),
 	'Fremde Download-Quellen werden verworfen.'
 );
+mgd_ail_updater_assert_same(
+	array(),
+	MGD_AI_Image_Labels_GitHub_Updater::normalize_release(
+		array(
+			'tag_name' => 'v0.5.1',
+			'assets'   => array(
+				array(
+					'name'                 => 'mgd-ai-image-labels-0.5.1.zip',
+					'browser_download_url' => 'https://github.com:444/MichaelGahnDESIGN/MGD-AI-Image-Labels/releases/download/v0.5.1/mgd-ai-image-labels-0.5.1.zip',
+				),
+			),
+		)
+	),
+	'Downloads über einen abweichenden Port werden verworfen.'
+);
+mgd_ail_updater_assert_same(
+	array(),
+	MGD_AI_Image_Labels_GitHub_Updater::normalize_release(
+		array(
+			'tag_name' => 'v0.5.1',
+			'assets'   => array(
+				array(
+					'name'                 => 'mgd-ai-image-labels-0.5.1.zip',
+					'browser_download_url' => 'https://github.com/other-owner/other-plugin/releases/download/v0.5.1/mgd-ai-image-labels-0.5.1.zip',
+				),
+			),
+		)
+	),
+	'Downloads aus einem anderen GitHub-Repository werden verworfen.'
+);
 
 $update = MGD_AI_Image_Labels_GitHub_Updater::build_update(
 	$release,
@@ -90,8 +120,8 @@ $plugin_source = file_get_contents( dirname( __DIR__ ) . '/mgd-ai-image-labels.p
 if ( false === $plugin_source ) {
 	throw new RuntimeException( 'Die Hauptdatei des Plugins konnte nicht gelesen werden.' );
 }
-mgd_ail_updater_assert_contains( 'Version:            0.6.8', $plugin_source, 'Die Plugin-Metadaten enthalten die veröffentlichte Release-Version 0.6.8.' );
+mgd_ail_updater_assert_contains( 'Version:            0.6.9', $plugin_source, 'Die Plugin-Metadaten enthalten die veröffentlichte Release-Version 0.6.9.' );
 mgd_ail_updater_assert_contains( 'Update URI:         https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels', $plugin_source, 'Die Plugin-Metadaten benennen die eindeutige öffentliche Update-Quelle.' );
-mgd_ail_updater_assert_contains( "define( 'MGD_AI_IMAGE_LABELS_VERSION', '0.6.8' );", $plugin_source, 'Die Laufzeit-Konstante entspricht der Plugin-Version.' );
+mgd_ail_updater_assert_contains( "define( 'MGD_AI_IMAGE_LABELS_VERSION', '0.6.9' );", $plugin_source, 'Die Laufzeit-Konstante entspricht der Plugin-Version.' );
 
 echo "PASS: Öffentliche GitHub-Releases werden sicher normalisiert.\n";

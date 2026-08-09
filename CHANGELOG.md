@@ -2,6 +2,21 @@
 
 Alle wesentlichen Änderungen werden in diesem Dokument festgehalten. Versionen folgen dem Format `MAJOR.MINOR.PATCH`.
 
+## 0.6.9 – 9. August 2026
+
+### Sicherheit
+
+- Die GitHub-Update-Prüfung akzeptiert Release-Pakete jetzt nur noch über HTTPS,
+  ohne abweichenden Port und aus dem festen Release-Pfad des eigenen
+  Repositories. Ein zusätzlicher Regressionstest deckt fremde Repository-Pfade
+  und abweichende Ports ab.
+
+### Dokumentation
+
+- README, Sicherheitsrichtlinie, Mitwirkungsleitfaden und GitHub-Wiki um
+  Installation, Vorschau, Divi-Ausgaben, Fehlersuche, Architektur,
+  Sicherheits- und Herkunftsprüfung ergänzt.
+
 ## 0.6.8 – 8. August 2026
 
 ### Behoben

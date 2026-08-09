@@ -6,6 +6,25 @@ Es ergänzt die WordPress-Mediathek um eine Auswahl pro Bild und gibt ein dezent
 
 > **Hinweis:** Die Entscheidung, ob und wie Inhalte gekennzeichnet werden müssen, hängt vom konkreten Inhalt, Verwendungszweck und geltendem Recht ab. Dieses Plugin ist ein technisches Hilfsmittel und keine Rechtsberatung.
 
+## Dokumentation
+
+Die vollständige, fortlaufend gepflegte Anleitung liegt im
+[GitHub-Wiki](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki).
+Die wichtigsten Einstiege:
+
+| Thema | Inhalt |
+| --- | --- |
+| [Installation und Updates](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Installation-und-Updates) | ZIP-Installation, GitHub-Updates, Backup und Rückfallweg |
+| [Kennzeichnen und Vorschau](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Kennzeichnen-und-Vorschau) | Arbeitsschritte in Mediathek und Divi-5-Medienmodal |
+| [Divi, Beitragsbilder und Blogmodule](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Divi,-Beitragsbilder-und-Blogmodule) | Unterstützung für Bildmodule, Beitragsbilder, Archive und Lazy Loading |
+| [Hintergrundbilder und Shortcodes](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Hintergrundbilder-und-Shortcodes) | Label auf einem Divi-Hintergrundbild ausgeben |
+| [Einstellungen und AI-Philosophie](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Einstellungen-und-AI-Philosophie) | Globale Gestaltung, CSS-Klassen und Transparenzseite |
+| [Fehlersuche und Support](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Fehlersuche-und-Support) | Prüfschritte für Cache, Blogkarten und Beitragsbilder |
+| [Sicherheit und Rechtliches](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Sicherheit,-Datenschutz-und-Rechtliches) | Datenfluss, Grenzen und verantwortliche Meldung von Sicherheitslücken |
+
+Der [Sicherheits- und Herkunftscheck vom 9. August 2026](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/blob/main/docs/SICHERHEITS-UND-HERKUNFTSPRUEFUNG-2026-08-09.md)
+dokumentiert zusätzlich Umfang, Ergebnis und Grenzen der aktuellen Prüfung.
+
 ## Funktionen
 
 - Auswahl direkt in den Anhang-Details der WordPress-Mediathek
@@ -44,6 +63,12 @@ Die Einstellungen werden als drei WordPress-Anhangsmetadaten gespeichert. Beim P
 ### Sicher speichern – auch im Divi-5-Builder
 
 Der Button **Kennzeichnung speichern** speichert Status, Position und Glas-Variante für genau den gerade geöffneten Medien-Anhang. Im Divi-5-Medienfenster läuft die Medienbibliothek in einem separaten Builder-Fenster. Deshalb wird der schlanke, lokale Speichern-Handler gezielt auch dort geladen und arbeitet ohne Abhängigkeit von jQuery. Er sucht bewusst zuerst innerhalb des sichtbaren Anhang-Details-Dialogs und nicht global in der Seite. So werden die Werte nicht versehentlich aus einem verdeckten oder vorherigen Dialog gelesen. Nach erfolgreicher Speicherung kann der Anhang gewechselt oder das Medienfenster neu geöffnet werden; die drei Werte werden erneut aus den WordPress-Anhangsmetadaten geladen.
+
+### Live-Vorschau im Medienmodal
+
+Die Vorschau im geöffneten Medienmodal reagiert direkt auf Status, Ecke und Glas-Variante. Sie ist absichtlich nur eine Vorschau: Weder Bilddatei noch Metadaten werden dadurch geändert und es wird keine Anfrage an einen externen Dienst gesendet. Erst **Kennzeichnung speichern** übernimmt die drei Werte für den Anhang.
+
+Die Vorschau verwendet dieselben Label-Klassen und proportionalen Innenabstände wie die Frontend-Ausgabe. Dadurch bleibt sie bei unterschiedlicher Modalgröße auf der sichtbaren Bildfläche in der gewählten Ecke. Sie ist eine verlässliche Stilvorschau; das finale Layout hängt zusätzlich vom jeweiligen Theme, der ausgegebenen Bildgröße und gegebenenfalls dessen CSS ab.
 
 ## Kennzeichnungsarten
 
@@ -151,6 +176,8 @@ Die Frontend-Ausgabe ist nicht destruktiv. Das Plugin umschließt nur die jeweil
 
 Einige Themes geben Beitragsbilder direkt als `<img>` aus. Dafür enthält das Plugin einen lokalen Fallback für klassisches Divi und WordPress-Beitragsausgaben. Die Zuordnung bleibt auf explizit gekennzeichnete Medien beschränkt.
 
+Bei responsiven Bildern werden die von WordPress erzeugten Größen desselben Medien-Anhangs berücksichtigt, einschließlich lokaler WebP- und AVIF-Varianten. Für CDN-Auslieferungen wird bewusst der kanonische Upload-Pfad verglichen, damit eine technisch gleichwertige lokale Auslieferung nicht an einer abweichenden Domain scheitert. Die Kennzeichnung ist keine Bildbearbeitung und wird nicht in die Bilddatei eingebrannt.
+
 ## Entwicklung
 
 ### Struktur
@@ -160,6 +187,8 @@ assets/
   branding/                         Lokales Icon, Banner und Dokumentations-Animation
   css/frontend.css                 Lokale Frontend-Gestaltung
   js/media-save.js                 Speichern im Medien-Dialog
+  js/media-preview.js              Nicht speichernde Vorschau im Medienmodal
+  css/media-preview.css            Gestaltung der Medienvorschau
 includes/
   class-admin-page.php              Controller der zentralen Medien-Verwaltung
   class-ai-philosophy.php           AI-Philosophie, Shortcode und sichere Seitenerstellung
@@ -199,7 +228,7 @@ git diff --check
 
 Jede Version erhält einen Git-Tag im Format `vX.Y.Z` und ein ZIP-Release, dessen oberster Ordner `mgd-ai-image-labels` heißt. WordPress erkennt neuere öffentliche GitHub-Releases im üblichen Plugin-Update-Zyklus und zeigt sie in **Dashboard → Aktualisierungen** beziehungsweise **Plugins** an. Das Release-Paket enthält nur die zur Laufzeit und Dokumentation erforderlichen Plugin-Dateien; Entwicklungs-Worktrees, Tests, lokale Visualisierungen, Archivdateien und Konfigurationsgeheimnisse gehören nicht hinein.
 
-Die Prüfung ruft höchstens alle zwölf Stunden ausschließlich die öffentliche GitHub-Release-API dieses Repositories auf. Sie benötigt keine Zugangsdaten und überträgt keine Bilder, Bildmetadaten, Besucher- oder Nutzerdaten. Ein Release wird nur angeboten, wenn die Version neuer ist und eine exakt passende ZIP-Datei über `https://github.com` bereitsteht. Bei Netzwerk- oder Validierungsfehlern bleibt WordPress beim bisherigen Stand und führt kein Update aus.
+Die Prüfung ruft höchstens alle zwölf Stunden ausschließlich die öffentliche GitHub-Release-API dieses Repositories auf. Sie benötigt keine Zugangsdaten und überträgt keine Bilder, Bildmetadaten, Besucher- oder Nutzerdaten. Ein Release wird nur angeboten, wenn die Version neuer ist und eine exakt passende ZIP-Datei über HTTPS, ohne abweichenden Port und aus dem festen Release-Pfad dieses Repositories bereitsteht. Bei Netzwerk- oder Validierungsfehlern bleibt WordPress beim bisherigen Stand und führt kein Update aus.
 
 Automatische WordPress-Updates können Website-Administratoren wie bei anderen Plugins bewusst in der Plugin-Verwaltung aktivieren oder deaktivieren. Vor jedem Update empfiehlt sich ein getestetes Backup, zum Beispiel über UpdraftPlus.
 
@@ -213,6 +242,14 @@ Automatische WordPress-Updates können Website-Administratoren wie bei anderen P
 - Automatische Footer-Änderungen erfolgen nur bei einer einzigen eindeutig erkannten Footer-Menüposition; sonst bleibt die Navigation unangetastet.
 - Die Update-Prüfung verwendet keine GitHub-Zugangsdaten und akzeptiert nur HTTPS-Pakete vom festgelegten öffentlichen GitHub-Repository.
 - Bitte veröffentliche niemals `wp-config.php`, Backups, Logs mit personenbezogenen Daten oder Zugangsdaten im Repository.
+
+Eine Meldung von Sicherheitslücken erfolgt gemäß [SECURITY.md](SECURITY.md), nicht über ein öffentliches Issue.
+
+## Herkunft, Lizenz und Grenzen
+
+Der Quellcode steht unter der [GPL-2.0-or-later](LICENSE), passend zu WordPress. Das Plugin enthält keine Composer-, npm- oder eingebundenen Drittanbieter-Bibliotheken. Die mitgelieferten SVG-, PNG- und GIF-Dateien liegen lokal im Repository; sie laden weder fremde Schriftarten noch fremde Bilder nach.
+
+Der Sicherheits- und Herkunftscheck hat keine Zugangsdaten, API-Schlüssel, eingebetteten Fremdcode-Hinweis oder fremde Lizenzkennzeichnung im aktuellen Quell- und Paketbestand festgestellt. Eine technische Prüfung kann jedoch nicht beweisen, dass es weltweit keinen ähnlichen Codeschnipsel oder kein geschütztes Werk gibt. Vor einer rechtlichen Gewährleistung, einer Markenanmeldung oder einer Übernahme von fremden Assets ist deshalb eine fachkundige Einzelfallprüfung nötig. Details und Prüfumfang stehen im [Auditbericht](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/blob/main/docs/SICHERHEITS-UND-HERKUNFTSPRUEFUNG-2026-08-09.md).
 
 ## Mitwirken
 
