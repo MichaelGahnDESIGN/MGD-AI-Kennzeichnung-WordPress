@@ -159,6 +159,12 @@ final class MGD_AI_Image_Labels_Image_Renderer {
 				 * herausverschoben werden. Der ganze picture-Container bleibt
 				 * zusammen mit seinen source-Varianten im relativen Kontext. */
 				const mediaElement = image.closest('picture') || image;
+				/* Der MutationObserver sieht auch die vom Plugin erzeugten Knoten.
+				 * Ein bereits vorbereiteter Bildkontext bleibt deshalb unverändert.
+				 * Das verhindert verschachtelte Wrapper und eine Endlosschleife bei
+				 * mehreren gekennzeichneten Bildern auf einer Seite. */
+				const existingWrapper = mediaElement.closest('.mgd-ail-image-wrapper');
+				if (existingWrapper) return existingWrapper;
 				const diviWrap = mediaElement.closest('.et_pb_image_wrap');
 				if (diviWrap) return diviWrap;
 
@@ -211,7 +217,12 @@ final class MGD_AI_Image_Labels_Image_Renderer {
 			new MutationObserver((mutations) => {
 				for (const mutation of mutations) {
 					for (const node of mutation.addedNodes) {
-						if (node instanceof Element) applyAllLabels(node);
+						if (!(node instanceof Element)) continue;
+						/* Eigene Wrapper und Badges benötigen keine weitere Prüfung.
+						 * Dadurch löst das Ergänzen eines Labels niemals selbst erneut
+						 * eine Verarbeitung derselben Bilder aus. */
+						if (node.classList.contains('mgd-ail-image-wrapper') || node.classList.contains('mgd-ail-badge')) continue;
+						applyAllLabels(node);
 					}
 				}
 			}).observe(document.documentElement, {childList: true, subtree: true});

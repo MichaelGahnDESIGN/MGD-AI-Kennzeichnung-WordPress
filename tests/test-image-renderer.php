@@ -302,5 +302,14 @@ mgd_ail_renderer_assert_contains( 'MutationObserver', $runtime_output, 'Der Fron
 mgd_ail_renderer_assert_contains( 'srcset', $runtime_output, 'Der Frontend-Fallback muss auch die vom Browser aus srcset gewählte WordPress-Bildgröße exakt zuordnen.' );
 mgd_ail_renderer_assert_contains( 'image.currentSrc || image.src', $runtime_output, 'Der Frontend-Fallback muss die tatsächlich gerenderte responsive Bildquelle verwenden.' );
 mgd_ail_renderer_assert_contains( "image.closest('picture') || image", $runtime_output, 'Ein responsives picture-Element muss vollständig im Badge-Kontext bleiben.' );
+/*
+ * Ein durch den MutationObserver erneut betrachtetes Bild darf keinen zweiten
+ * Wrapper erhalten. Ohne diesen Schutz erzeugt jede eigene DOM-Änderung eine
+ * weitere Beobachter-Runde. Mehrere gekennzeichnete Blogbilder können dadurch
+ * die Darstellung der Seite blockieren.
+ */
+mgd_ail_renderer_assert_contains( "mediaElement.closest('.mgd-ail-image-wrapper')", $runtime_output, 'Der Laufzeit-Fallback erkennt seinen eigenen Bildwrapper vor einer erneuten DOM-Änderung.' );
+mgd_ail_renderer_assert_contains( "node.classList.contains('mgd-ail-image-wrapper')", $runtime_output, 'Der MutationObserver ignoriert die vom Plugin selbst hinzugefügten Bildwrapper.' );
+mgd_ail_renderer_assert_contains( "node.classList.contains('mgd-ail-badge')", $runtime_output, 'Der MutationObserver ignoriert die vom Plugin selbst hinzugefügten Kennzeichnungen.' );
 
 echo "PASS: Barrierefreie KI-Badges werden rein und sicher gerendert.\n";

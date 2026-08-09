@@ -2,6 +2,22 @@
 
 Alle wesentlichen Änderungen werden in diesem Dokument festgehalten. Versionen folgen dem Format `MAJOR.MINOR.PATCH`.
 
+## 0.6.10 – 9. August 2026
+
+### Behoben
+
+- Der Frontend-Fallback erkennt seine eigenen Bildwrapper und Kennzeichnungen
+  zuverlässig. Dadurch kann der MutationObserver ein bereits verarbeitetes Bild
+  nicht erneut umschließen.
+- Mehrere gekennzeichnete Bilder in Divi-Blogmodulen, Beitragsarchiven oder auf
+  normalen Seiten bleiben stabil. Es entstehen weder verschachtelte Wrapper noch
+  eine Verarbeitungsschleife, die die Seitendarstellung blockieren könnte.
+
+### Sicherheit und Datenschutz
+
+- Die Korrektur bleibt vollständig lokal im Browser und überträgt weiterhin
+  weder Bilddaten noch Besucherdaten oder Kennzeichnungswerte an Dritte.
+
 ## 0.6.9 – 9. August 2026
 
 ### Sicherheit
