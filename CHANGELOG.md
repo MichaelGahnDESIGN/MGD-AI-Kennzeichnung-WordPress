@@ -2,6 +2,21 @@
 
 Alle wesentlichen Änderungen werden in diesem Dokument festgehalten. Versionen folgen dem Format `MAJOR.MINOR.PATCH`.
 
+## 1.0.3 – 9. August 2026
+
+### Geändert
+
+- Das GitHub-Repository wurde nach der erfolgreichen Aktualisierung aller
+  verwalteten Installationen in `MGD-AI-Kennzeichnung-WordPress` umbenannt.
+- Dokumentation, Hersteller-Links und die Release-Quelle verweisen jetzt auf
+  das neue öffentliche Repository.
+
+### Wichtig
+
+- Diese Version wird als erster regulärer Release aus dem neuen Update-Kanal
+  veröffentlicht. Installationen ab 1.0.2 können sie wie gewohnt über
+  WordPress erkennen und aktualisieren.
+
 ## 1.0.2 – 9. August 2026
 
 ### Geändert

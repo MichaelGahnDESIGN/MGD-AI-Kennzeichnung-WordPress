@@ -30,6 +30,6 @@ declare(strict_types=1);
 		<li>„Keine KI“ gibt kein sichtbares Label aus.</li>
 		<li>Die Kennzeichnung ist eine Transparenzhilfe und ersetzt keine rechtliche Einzelfallprüfung.</li>
 		<li>Bei Caches nach einer Änderung die betreffende Seite bzw. den Cache leeren.</li>
-		<li>Für Hilfe und aktuelle Anleitungen nutze die <a href="https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki" target="_blank" rel="noopener noreferrer">GitHub-Dokumentation</a> oder den <a href="https://michael-gahn.de/support/" target="_blank" rel="noopener noreferrer">Support</a>.</li>
+		<li>Für Hilfe und aktuelle Anleitungen nutze die <a href="https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/wiki" target="_blank" rel="noopener noreferrer">GitHub-Dokumentation</a> oder den <a href="https://michael-gahn.de/support/" target="_blank" rel="noopener noreferrer">Support</a>.</li>
 	</ul>
 </section>

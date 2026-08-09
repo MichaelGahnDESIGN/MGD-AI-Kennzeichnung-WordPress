@@ -9,20 +9,20 @@ Es ergänzt die WordPress-Mediathek um eine Auswahl pro Bild und gibt ein dezent
 ## Dokumentation
 
 Die vollständige, fortlaufend gepflegte Anleitung liegt im
-[GitHub-Wiki](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki).
+[GitHub-Wiki](https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/wiki).
 Die wichtigsten Einstiege:
 
 | Thema | Inhalt |
 | --- | --- |
-| [Installation und Updates](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Installation-und-Updates) | ZIP-Installation, GitHub-Updates, Backup und Rückfallweg |
-| [Kennzeichnen und Vorschau](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Kennzeichnen-und-Vorschau) | Arbeitsschritte in Mediathek und Divi-5-Medienmodal |
-| [Divi, Beitragsbilder und Blogmodule](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Divi,-Beitragsbilder-und-Blogmodule) | Unterstützung für Bildmodule, Beitragsbilder, Archive und Lazy Loading |
-| [Hintergrundbilder und Shortcodes](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Hintergrundbilder-und-Shortcodes) | Label auf einem Divi-Hintergrundbild ausgeben |
-| [Einstellungen und AI-Philosophie](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Einstellungen-und-AI-Philosophie) | Globale Gestaltung, CSS-Klassen und Transparenzseite |
-| [Fehlersuche und Support](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Fehlersuche-und-Support) | Prüfschritte für Cache, Blogkarten und Beitragsbilder |
-| [Sicherheit und Rechtliches](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/wiki/Sicherheit,-Datenschutz-und-Rechtliches) | Datenfluss, Grenzen und verantwortliche Meldung von Sicherheitslücken |
+| [Installation und Updates](https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/wiki/Installation-und-Updates) | ZIP-Installation, GitHub-Updates, Backup und Rückfallweg |
+| [Kennzeichnen und Vorschau](https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/wiki/Kennzeichnen-und-Vorschau) | Arbeitsschritte in Mediathek und Divi-5-Medienmodal |
+| [Divi, Beitragsbilder und Blogmodule](https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/wiki/Divi,-Beitragsbilder-und-Blogmodule) | Unterstützung für Bildmodule, Beitragsbilder, Archive und Lazy Loading |
+| [Hintergrundbilder und Shortcodes](https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/wiki/Hintergrundbilder-und-Shortcodes) | Label auf einem Divi-Hintergrundbild ausgeben |
+| [Einstellungen und AI-Philosophie](https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/wiki/Einstellungen-und-AI-Philosophie) | Globale Gestaltung, CSS-Klassen und Transparenzseite |
+| [Fehlersuche und Support](https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/wiki/Fehlersuche-und-Support) | Prüfschritte für Cache, Blogkarten und Beitragsbilder |
+| [Sicherheit und Rechtliches](https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/wiki/Sicherheit,-Datenschutz-und-Rechtliches) | Datenfluss, Grenzen und verantwortliche Meldung von Sicherheitslücken |
 
-Der [Sicherheits- und Herkunftscheck vom 9. August 2026](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/blob/main/docs/SICHERHEITS-UND-HERKUNFTSPRUEFUNG-2026-08-09.md)
+Der [Sicherheits- und Herkunftscheck vom 9. August 2026](https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/blob/main/docs/SICHERHEITS-UND-HERKUNFTSPRUEFUNG-2026-08-09.md)
 dokumentiert zusätzlich Umfang, Ergebnis und Grenzen der aktuellen Prüfung.
 
 ## Funktionen
@@ -240,14 +240,13 @@ git diff --check
 
 ## Releases und Updates
 
-### Repository-Umbenennung sicher vorbereiten
+### Repository-Umbenennung abgeschlossen
 
-Version **1.0.2** ist ein Übergangsrelease für die geplante Umbenennung des
-GitHub-Repositories in `MGD-AI-Kennzeichnung-WordPress`. Bestehende Websites
-aktualisieren 1.0.2 noch über die bisherige Adresse ganz normal in WordPress.
-Erst wenn die verwalteten Installationen diese Version verwenden, darf das
-Repository umbenannt werden. Der Plugin-Ordner `mgd-ai-image-labels`, die
-Metaschlüssel und alle Kennzeichnungswerte bleiben dabei unverändert.
+Das öffentliche Repository heißt jetzt
+`MGD-AI-Kennzeichnung-WordPress`. Die Übergangsversion 1.0.2 hat den neuen
+Update-Kanal vorbereitet; ab 1.0.3 werden reguläre Updates über diese Adresse
+veröffentlicht. Der Plugin-Ordner `mgd-ai-image-labels`, die Metaschlüssel und
+alle Kennzeichnungswerte bleiben unverändert.
 
 Jede Version erhält einen Git-Tag im Format `vX.Y.Z` und ein ZIP-Release, dessen oberster Ordner `mgd-ai-image-labels` heißt. WordPress erkennt neuere öffentliche GitHub-Releases im üblichen Plugin-Update-Zyklus und zeigt sie in **Dashboard → Aktualisierungen** beziehungsweise **Plugins** an. Das Release-Paket enthält nur die zur Laufzeit und Dokumentation erforderlichen Plugin-Dateien; Entwicklungs-Worktrees, Tests, lokale Visualisierungen, Archivdateien und Konfigurationsgeheimnisse gehören nicht hinein.
 
@@ -272,7 +271,7 @@ Eine Meldung von Sicherheitslücken erfolgt gemäß [SECURITY.md](SECURITY.md), 
 
 Der Quellcode steht unter der [GPL-2.0-or-later](LICENSE), passend zu WordPress. Das Plugin enthält keine Composer-, npm- oder eingebundenen Drittanbieter-Bibliotheken. Die mitgelieferten SVG-, PNG- und GIF-Dateien liegen lokal im Repository; sie laden weder fremde Schriftarten noch fremde Bilder nach.
 
-Der Sicherheits- und Herkunftscheck hat keine Zugangsdaten, API-Schlüssel, eingebetteten Fremdcode-Hinweis oder fremde Lizenzkennzeichnung im aktuellen Quell- und Paketbestand festgestellt. Eine technische Prüfung kann jedoch nicht beweisen, dass es weltweit keinen ähnlichen Codeschnipsel oder kein geschütztes Werk gibt. Vor einer rechtlichen Gewährleistung, einer Markenanmeldung oder einer Übernahme von fremden Assets ist deshalb eine fachkundige Einzelfallprüfung nötig. Details und Prüfumfang stehen im [Auditbericht](https://github.com/MichaelGahnDESIGN/MGD-AI-Image-Labels/blob/main/docs/SICHERHEITS-UND-HERKUNFTSPRUEFUNG-2026-08-09.md).
+Der Sicherheits- und Herkunftscheck hat keine Zugangsdaten, API-Schlüssel, eingebetteten Fremdcode-Hinweis oder fremde Lizenzkennzeichnung im aktuellen Quell- und Paketbestand festgestellt. Eine technische Prüfung kann jedoch nicht beweisen, dass es weltweit keinen ähnlichen Codeschnipsel oder kein geschütztes Werk gibt. Vor einer rechtlichen Gewährleistung, einer Markenanmeldung oder einer Übernahme von fremden Assets ist deshalb eine fachkundige Einzelfallprüfung nötig. Details und Prüfumfang stehen im [Auditbericht](https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress/blob/main/docs/SICHERHEITS-UND-HERKUNFTSPRUEFUNG-2026-08-09.md).
 
 ## Mitwirken
 
