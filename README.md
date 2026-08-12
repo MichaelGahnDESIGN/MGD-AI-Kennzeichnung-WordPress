@@ -1,5 +1,7 @@
 # MGD AI Kennzeichnung WordPress
 
+Copyright (c) 2026 Michael Gahn DESIGN - https://Michael-Gahn.de
+
 Ein schlankes WordPress-Plugin für die transparente, barrierefreie Kennzeichnung von Bildern, bei deren Erstellung oder Bearbeitung KI beteiligt war.
 
 Es ergänzt die WordPress-Mediathek um eine Auswahl pro Bild und gibt ein dezentes Label direkt auf dem Bild aus. Das Plugin lädt keine externen Schriften, Skripte, Analysewerkzeuge oder Tracking-Dienste.
