@@ -302,3 +302,43 @@ Keine Zugangsdaten, privaten Bild-URLs oder personenbezogenen Daten in Issues ve
 ## Lizenz
 
 Dieses Plugin steht unter der [GNU General Public License v2.0 oder neuer](LICENSE).
+
+<!-- MGD-LEGAL -->
+---
+
+## Lizenz
+
+Dieses Projekt steht unter der [GNU GPL v2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html). Den vollständigen Text enthält die Datei [LICENSE](LICENSE).
+
+## Impressum
+
+**Angaben gemäß § 5 DDG (Digitale-Dienste-Gesetz)**
+
+Michael Gahn DESIGN  
+Michael Gahn  
+Dr.-Theodor-Brugsch Str. 12  
+08529 Plauen  
+Sachsen  
+Deutschland
+
+Tel.: +49 (0) 151 59156639  
+E-Mail: Anfrage@Michael-Gahn.de
+
+Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:  
+Steuernummer: 223/222/02451  
+Ust-ID: DE288143343
+
+Wir sind zur Teilnahme an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle weder verpflichtet noch bereit.
+
+**Redaktionell verantwortlich:**
+
+Michael Gahn DESIGN  
+Michael Gahn  
+Dr.-Theodor-Brugsch Str. 12  
+08529 Plauen  
+Sachsen  
+Deutschland
+
+Tel.: +49 (0) 151 59156639  
+E-Mail: Anfrage@Michael-Gahn.de
+<!-- /MGD-LEGAL -->
