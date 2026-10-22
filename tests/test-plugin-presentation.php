@@ -30,7 +30,7 @@ mgd_ail_presentation_assert_contains( 'noopener noreferrer', $source, 'Externe L
 mgd_ail_presentation_assert_contains( 'plugin_row_meta', $source, 'Die Präsentationsklasse erweitert die Pluginliste nativ.' );
 mgd_ail_presentation_assert_contains( 'open-plugin-details-modal', $source, 'Details anzeigen verwendet das WordPress-Modal.' );
 mgd_ail_presentation_assert_contains( 'plugins.php', $icon, 'Das lokale Icon wird ausschließlich in der WordPress-Pluginliste geladen.' );
-mgd_ail_presentation_assert_contains( 'icon-128x128.png', $icon, 'Das Pluginlisten-Icon verwendet das lokal ausgelieferte Branding-Asset.' );
+mgd_ail_presentation_assert_contains( 'icon-256x256.png', $icon, 'Das Pluginlisten-Icon verwendet das lokal ausgelieferte Branding-Asset.' );
 mgd_ail_presentation_assert_contains( 'mgd-ai-image-labels/mgd-ai-image-labels.php', $icon, 'Das Icon ist gezielt auf die eigene Plugin-Zeile begrenzt.' );
 mgd_ail_presentation_assert_contains( 'MGD_AI_Image_Labels_Plugin_List_Icon::register', $plugin, 'Die abgetrennte Icon-Komponente wird zentral registriert.' );
 

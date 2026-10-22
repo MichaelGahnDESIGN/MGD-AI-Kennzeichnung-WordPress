@@ -36,7 +36,7 @@ final class MGD_AI_Image_Labels_Plugin_List_Icon {
 		wp_register_style( 'mgd-ail-plugin-list-icon', false, array(), MGD_AI_IMAGE_LABELS_VERSION );
 		wp_enqueue_style( 'mgd-ail-plugin-list-icon' );
 
-		$icon_url = esc_url( MGD_AI_IMAGE_LABELS_URL . 'assets/branding/icon-128x128.png' );
+		$icon_url = esc_url( MGD_AI_IMAGE_LABELS_URL . 'assets/branding/icon-256x256.png' );
 		$css      = sprintf(
 			'tr[data-plugin="mgd-ai-image-labels/mgd-ai-image-labels.php"] .plugin-title strong{display:inline-flex;align-items:center;gap:10px;}tr[data-plugin="mgd-ai-image-labels/mgd-ai-image-labels.php"] .plugin-title strong:before{content:"";display:inline-block;flex:0 0 36px;width:36px;height:36px;border-radius:9px;background:center/cover no-repeat url("%1$s");box-shadow:0 2px 8px rgba(0,0,0,.16);}',
 			$icon_url

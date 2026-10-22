@@ -1,5 +1,11 @@
 # Änderungsprotokoll
 
+## 1.0.4 – 2026-10-22
+
+- Plugin-Icon lokal eingebunden und im Release-Paket enthalten.
+- Darstellung in der Erweiterungsverwaltung ergänzt beziehungsweise verbessert.
+- Keine Änderung an Fachlogik, Einstellungen oder Datenbank.
+
 Alle wesentlichen Änderungen werden in diesem Dokument festgehalten. Versionen folgen dem Format `MAJOR.MINOR.PATCH`.
 
 ## 1.0.3 – 9. August 2026
