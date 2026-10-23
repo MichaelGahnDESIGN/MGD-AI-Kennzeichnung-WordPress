@@ -108,12 +108,12 @@ final class MGD_AI_Image_Labels_AI_Philosophy {
 	public static function handle_save_content(): void {
 		self::assert_can_manage();
 
-		$nonce = isset( $_POST['mgd_ail_ai_philosophy_nonce'] ) && is_string( $_POST['mgd_ail_ai_philosophy_nonce'] ) ? $_POST['mgd_ail_ai_philosophy_nonce'] : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Prüfung erfolgt direkt danach.
+		$nonce = isset( $_POST['mgd_ail_ai_philosophy_nonce'] ) && is_string( $_POST['mgd_ail_ai_philosophy_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['mgd_ail_ai_philosophy_nonce'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Prüfung erfolgt direkt danach.
 		if ( ! wp_verify_nonce( $nonce, 'mgd_ail_save_ai_philosophy' ) ) {
 			wp_die( 'Die Sicherheitsprüfung für die AI-Philosophie ist fehlgeschlagen.' );
 		}
 
-		$content = isset( $_POST['mgd_ail_ai_philosophy'] ) && is_string( $_POST['mgd_ail_ai_philosophy'] ) ? wp_unslash( $_POST['mgd_ail_ai_philosophy'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Prüfung erfolgte oben; Werte werden streng gefiltert.
+		$content = isset( $_POST['mgd_ail_ai_philosophy'] ) && is_string( $_POST['mgd_ail_ai_philosophy'] ) ? wp_kses_post( wp_unslash( $_POST['mgd_ail_ai_philosophy'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Prüfung erfolgte oben; Werte werden streng gefiltert.
 		update_option( self::OPTION_NAME, self::sanitize_content( $content ) );
 
 		self::redirect_with_notice( 'Der Text zur AI-Philosophie wurde gespeichert.' );
@@ -125,7 +125,7 @@ final class MGD_AI_Image_Labels_AI_Philosophy {
 	public static function handle_create_page(): void {
 		self::assert_can_create_page();
 
-		$nonce = isset( $_POST[ self::CREATE_PAGE_NONCE ] ) && is_string( $_POST[ self::CREATE_PAGE_NONCE ] ) ? $_POST[ self::CREATE_PAGE_NONCE ] : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Prüfung erfolgt direkt danach.
+		$nonce = isset( $_POST[ self::CREATE_PAGE_NONCE ] ) && is_string( $_POST[ self::CREATE_PAGE_NONCE ] ) ? sanitize_text_field( wp_unslash( $_POST[ self::CREATE_PAGE_NONCE ] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Prüfung erfolgt direkt danach.
 		if ( ! wp_verify_nonce( $nonce, self::CREATE_PAGE_ACTION ) ) {
 			wp_die( 'Die Sicherheitsprüfung für die AI-Philosophie-Seite ist fehlgeschlagen.' );
 		}

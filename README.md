@@ -1,5 +1,21 @@
 > **WordPress.org-Kandidat:** Dieser Branch verwendet native Verzeichnis-Updates. Paketbau, Prüfergebnisse und Wechselhinweise: [WordPress.org-Vorbereitung](docs/WORDPRESS-ORG.md). Die nachfolgende bisherige Dokumentation beschreibt auch die separate GitHub-Ausgabe.
 
+## Verzeichnisfassung 1.0.7
+
+![Plugin-Banner](wordpress-org/assets/banner-1544x500.png)
+
+Für das WordPress.org-Profil [michaelgahndesign](https://profiles.wordpress.org/michaelgahndesign/) vorbereitet. Vorgeschlagener Slug: `mgd-ai-image-labels`; der endgültige Name wird bei der Aufnahme bestätigt.
+
+- [Einreichungs-Readme](readme.txt) mit Funktionen, Installation, Datenschutz und Screenshots.
+- [Prüfbericht](docs/wordpress-org/ERGEBNIS.md) mit Einordnung aller verbleibenden lokalen Plugin-Check-Hinweise.
+- [Paketbau, Updatekanal und sicherer Wechsel](docs/WORDPRESS-ORG.md).
+
+`python3 scripts/build-wordpress-org.py` baut das installierbare ZIP mit Prüfsumme. `php tests/wordpress-org-contract.php` prüft Metadaten, Version, Grafiken und den nativen Updatekanal. Verzeichnisgrafiken und echte Backend-Screenshots liegen getrennt unter `wordpress-org/assets`; sie gehören später in den obersten SVN-assets-Ordner.
+
+**Noch nicht eingereicht oder von WordPress.org zugelassen.** Diese Fassung lädt keinen externen Plugin-Katalog und installiert keine GitHub-Updatepakete. Die unten folgende Projektdokumentation enthält zusätzlich die Geschichte und Bedienung der eigenständigen GitHub-Ausgabe auf main. Nicht beide Ausgaben gleichzeitig aktivieren.
+
+---
+
 <!-- MGD-HEADER -->
 <p align="center"><a href="https://Michael-Gahn.de"><img src="assets/mgd-logo.png" alt="Michael Gahn DESIGN" width="48"></a></p>
 
@@ -349,6 +365,6 @@ E-Mail: Anfrage@Michael-Gahn.de
 
 Eigenes lokales Icon in der WordPress-Pluginliste. Die Grafik ist im Release-Paket enthalten; keine externen Bilddienste und keine neuen gespeicherten Daten. Vorhandene Funktionen und Einstellungen bleiben unverändert.
 
-## 1.0.5 – Plugin-Verwaltung
+## 1.0.7 – Plugin-Verwaltung
 
 Separate Update-Prüfung, Plugin-Links und ergänzte lokale Details. [Anleitung](docs/WORDPRESS-VERWALTUNG.md).

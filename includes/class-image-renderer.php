@@ -803,7 +803,7 @@ final class MGD_AI_Image_Labels_Image_Renderer {
 			return true;
 		}
 
-		return isset( $_GET['et_fb'] ) && '1' === (string) $_GET['et_fb']; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- reine Vorschau-Erkennung ohne Zustandsänderung.
+		return isset( $_GET['et_fb'] ) && is_string( $_GET['et_fb'] ) && '1' === sanitize_text_field( wp_unslash( $_GET['et_fb'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- reine Vorschau-Erkennung ohne Zustandsänderung.
 	}
 
 	/** @param mixed $value */

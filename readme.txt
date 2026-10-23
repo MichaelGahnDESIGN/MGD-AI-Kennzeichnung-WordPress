@@ -4,7 +4,7 @@ Tags: media, images, artificial intelligence
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.0.5
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,12 +41,16 @@ WordPress checks the official directory. This edition has no configurable update
 = Does it send analytics? =
 No analytics or telemetry service is included. WordPress communicates with WordPress.org for native updates. Support links open only when clicked.
 
+== Screenshots ==
+
+1. Media administration and AI image-label settings.
+
 == Changelog ==
 
-= 1.0.5 =
+= 1.0.7 =
 * Prepared a WordPress.org candidate with native updates, local assets and reviewed public credits.
 
 == Upgrade Notice ==
 
-= 1.0.5 =
+= 1.0.7 =
 Submission candidate. Do not activate alongside the GitHub edition. Back up the database before changing distribution channels.

@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 	<p>Erkläre hier transparent, wie du künstliche Intelligenz einsetzt. Der Text bleibt auf deiner WordPress-Installation und kann mit einem Shortcode auf jeder Seite ausgegeben werden.</p>
 
 	<?php if ( isset( $_GET['mgd_ail_notice'] ) && is_string( $_GET['mgd_ail_notice'] ) ) : // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Reine, nach einem geschützten POST erzeugte Statusmeldung. ?>
-		<div class="notice notice-info is-dismissible"><p><?php echo esc_html( rawurldecode( wp_unslash( $_GET['mgd_ail_notice'] ) ) ); ?></p></div>
+		<div class="notice notice-info is-dismissible"><p><?php echo esc_html( sanitize_text_field( wp_unslash( $_GET['mgd_ail_notice'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nur Textausgabe, keine Änderung. ?></p></div>
 	<?php endif; ?>
 
 	<form action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post">
