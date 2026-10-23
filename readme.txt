@@ -10,16 +10,16 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Mark AI-generated or edited images with configurable local labels.
 
+== Description ==
+
+Mark AI-generated or edited images with configurable local labels.
+
 Features:
 
 * Label generated, partially generated, edited and deepfake-related media with an explicit status.
 * Choose the label position and a light, dark or automatic presentation.
 * Keep original image files unchanged; labels are rendered locally.
 * Configure translated labels and add an editable AI-content information page.
-
-== Description ==
-
-Mark AI-generated or edited images with configurable local labels.
 
 This edition uses native WordPress.org updates. There is no GitHub self-updater or external plugin installer. Updates become available after approval and publication in the directory.
 
