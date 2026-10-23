@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Ansicht: Redaktioneller Text und explizite Veröffentlichung der AI-Philosophie.
  *
@@ -9,6 +10,7 @@
  */
 
 declare(strict_types=1);
+defined( 'ABSPATH' ) || exit;
 ?>
 <section class="mgd-ail-admin-section">
 	<h2>AI-Philosophie</h2>

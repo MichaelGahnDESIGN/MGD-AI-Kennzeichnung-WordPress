@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Ansicht: Dokumentation kopierbarer CSS-Klassen und des Hintergrund-Shortcodes.
  *
@@ -6,6 +7,7 @@
  */
 
 declare(strict_types=1);
+defined( 'ABSPATH' ) || exit;
 
 
 $label_classes = array(

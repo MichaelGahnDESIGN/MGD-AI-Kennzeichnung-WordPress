@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Ansicht: Bedienungsdokumentation direkt in der Plugin-Verwaltung.
  *
@@ -6,6 +7,7 @@
  */
 
 declare(strict_types=1);
+defined( 'ABSPATH' ) || exit;
 ?>
 <section class="mgd-ail-admin-card">
 	<h2>Dokumentation</h2>

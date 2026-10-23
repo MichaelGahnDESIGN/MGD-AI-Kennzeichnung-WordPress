@@ -9,3 +9,6 @@ node_modules/
 .worktrees/
 .superpowers/
 PLAYTEST/
+
+/build/wordpress-org/
+/artifacts/wordpress-org/
