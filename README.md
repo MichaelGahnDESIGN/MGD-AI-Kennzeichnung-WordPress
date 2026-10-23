@@ -346,3 +346,7 @@ E-Mail: Anfrage@Michael-Gahn.de
 ## Plugin-Icon – Version 1.0.4
 
 Eigenes lokales Icon in der WordPress-Pluginliste. Die Grafik ist im Release-Paket enthalten; keine externen Bilddienste und keine neuen gespeicherten Daten. Vorhandene Funktionen und Einstellungen bleiben unverändert.
+
+## 1.0.5 – Plugin-Verwaltung
+
+Separate Update-Prüfung, Plugin-Links und ergänzte lokale Details. [Anleitung](docs/WORDPRESS-VERWALTUNG.md).
