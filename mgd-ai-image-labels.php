@@ -1,15 +1,16 @@
 <?php
 /**
- * Plugin Name:       MGD AI Kennzeichnung WordPress
+ * Plugin Name: MGD AI Image Labels
  * Plugin URI:         https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress
  * Description:       Sichere Grundlage für die transparente Kennzeichnung von KI-bezogenen Bildern in der WordPress-Mediathek.
  * Version:            1.0.5
  * Requires at least:  6.0
  * Requires PHP:       8.1
+ * License: GPL-2.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Author:             Michael Gahn DESIGN
  * Author URI:         https://michael-gahn.de/
  * Text Domain:        mgd-ai-image-labels
- * Update URI:         https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress
  *
  * Das Plugin ergänzt die WordPress-Mediathek um eine sichere Auswahl für
  * KI-Kennzeichnungen und gibt sie bei passenden WordPress- und Divi-5-Bildern
@@ -35,7 +36,7 @@ require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-plugin.php';
 MGD_AI_Image_Labels_Plugin::boot();
 
 require_once __DIR__ . '/includes/class-mgd-plugin-admin-tools.php';
-\MGD_Plugin_Admin_Tools_20261023::register([
+\MGD_WordPress_Org_Admin_Tools::register([
     'file' => __FILE__,
     'repo' => 'MGD-AI-Kennzeichnung-WordPress',
     'slug' => 'mgd-ai-image-labels',

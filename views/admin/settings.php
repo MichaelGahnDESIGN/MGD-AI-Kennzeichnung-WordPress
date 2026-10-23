@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Ansicht: Globale Standards und lokale Live-Vorschau.
  *
@@ -8,6 +9,7 @@
  */
 
 declare(strict_types=1);
+defined( 'ABSPATH' ) || exit;
 
 $resolved_language = MGD_AI_Image_Labels_Label_Translations::get_language();
 $labels_de         = MGD_AI_Image_Labels_Label_Translations::get_labels( 'de' );

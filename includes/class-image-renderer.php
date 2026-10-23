@@ -334,8 +334,8 @@ final class MGD_AI_Image_Labels_Image_Renderer {
 	private static function get_local_upload_source_path( string $source_url, string $base_url ): string {
 		$source_path = self::get_url_path( $source_url );
 		$upload_path = self::get_url_path( $base_url . '/' );
-		$source_host = parse_url( $source_url, PHP_URL_HOST );
-		$upload_host = parse_url( $base_url, PHP_URL_HOST );
+		$source_host = wp_parse_url( $source_url, PHP_URL_HOST );
+		$upload_host = wp_parse_url( $base_url, PHP_URL_HOST );
 
 		if (
 			'' === $source_path ||
@@ -357,7 +357,7 @@ final class MGD_AI_Image_Labels_Image_Renderer {
 	 * Cache-Buster, ohne aus einer URL jemals eine Anhangs-ID zu erraten.
 	 */
 	private static function get_url_path( string $url ): string {
-		$path = parse_url( $url, PHP_URL_PATH );
+		$path = wp_parse_url( $url, PHP_URL_PATH );
 
 		return is_string( $path ) && '' !== $path && '/' === $path[0] ? $path : '';
 	}

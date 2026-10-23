@@ -33,7 +33,6 @@ final class MGD_AI_Image_Labels_Plugin {
 		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-attachment-meta.php';
 		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-plugin-options.php';
 		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-label-translations.php';
-		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-github-updater.php';
 		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-plugin-presentation.php';
 		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-plugin-list-icon.php';
 		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-media-fields.php';
@@ -43,7 +42,6 @@ final class MGD_AI_Image_Labels_Plugin {
 		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-admin-page.php';
 		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-admin-assets.php';
 		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-ai-philosophy.php';
-		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-mgd-wordpress-plugin-catalog.php';
 
 		// Die Komponenten ergänzen Felder in der Mediathek und eine rein lokale,
 		// nicht destruktive Ausgabe bei WordPress-Bildern. Divi-Inhalte, Header,
@@ -58,10 +56,8 @@ final class MGD_AI_Image_Labels_Plugin {
 		MGD_AI_Image_Labels_AI_Philosophy::register();
 		MGD_AI_Image_Labels_Plugin_Presentation::register();
 		MGD_AI_Image_Labels_Plugin_List_Icon::register();
-		( new MGD_WordPress_Plugin_Catalog() )->register( 'upload.php' );
 
 		// Das Plugin nutzt den normalen WordPress-Update-Dialog. Die Updater-Klasse
 		// kommuniziert dabei ausschließlich mit dem öffentlichen GitHub-Release-Endpunkt.
-		MGD_AI_Image_Labels_GitHub_Updater::register();
 	}
 }

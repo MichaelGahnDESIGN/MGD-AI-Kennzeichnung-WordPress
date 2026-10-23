@@ -1,0 +1,12 @@
+{
+  "slug": "mgd-ai-image-labels",
+  "source": ".",
+  "include": [
+    "assets",
+    "includes",
+    "views",
+    "mgd-ai-image-labels.php",
+    "readme.txt",
+    "LICENSE"
+  ]
+}
