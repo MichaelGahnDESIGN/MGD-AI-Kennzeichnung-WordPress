@@ -1,5 +1,11 @@
 # Änderungsprotokoll
 
+## 1.0.8 – 24.10.2026
+
+- Sieben eigene Kartenmotive, lokal als kleine WebP-Dateien eingebunden.
+- Lesbare Kategorie-/Versionsschilder, dekorative Bilder ohne Screenreader-Dopplung und Systemfarben-Unterstützung.
+- Neue Katalogansicht auch bei zuerst geladenen älteren MGD-Plugins.
+
 ## 1.0.6 – 23.10.2026
 
 - Neue Plugin-Kollektion mit eigenen Icons, Produktkarten, lokaler Suche und Filtern.

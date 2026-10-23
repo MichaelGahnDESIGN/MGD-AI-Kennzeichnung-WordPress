@@ -58,7 +58,7 @@ final class MGD_AI_Image_Labels_Plugin {
 		MGD_AI_Image_Labels_AI_Philosophy::register();
 		MGD_AI_Image_Labels_Plugin_Presentation::register();
 		MGD_AI_Image_Labels_Plugin_List_Icon::register();
-		( new MGD_WordPress_Plugin_Catalog_V3() )->register( 'upload.php' );
+		( new MGD_WordPress_Plugin_Catalog_V4() )->register( 'upload.php' );
 
 		// Das Plugin nutzt den normalen WordPress-Update-Dialog. Die Updater-Klasse
 		// kommuniziert dabei ausschließlich mit dem öffentlichen GitHub-Release-Endpunkt.
