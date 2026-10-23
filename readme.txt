@@ -48,6 +48,7 @@ No analytics or telemetry service is included. WordPress communicates with WordP
 == Changelog ==
 
 = 1.0.7 =
+* Reuse and verify the stored AI philosophy page ID, with a bounded fallback for older installations.
 * Prepared a WordPress.org candidate with native updates, local assets and reviewed public credits.
 
 == Upgrade Notice ==

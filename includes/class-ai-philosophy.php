@@ -26,6 +26,7 @@ final class MGD_AI_Image_Labels_AI_Philosophy {
 
 	/** Meta-Schlüssel, der ausschließlich von dieser Funktion erzeugte Seiten erkennt. */
 	private const PAGE_META_KEY = '_mgd_ail_ai_philosophy_page';
+	private const PAGE_ID_OPTION = 'mgd_ail_ai_philosophy_page_id';
 
 	/** Spezifische Nonce-Aktion für die Seitenerstellung. */
 	private const CREATE_PAGE_ACTION = 'mgd_ail_create_ai_philosophy_page';
@@ -167,6 +168,7 @@ final class MGD_AI_Image_Labels_AI_Philosophy {
 			$created = true;
 		}
 
+		update_option( self::PAGE_ID_OPTION, $page_id, false );
 		$footer_result = self::add_to_unique_footer_menu( $page_id );
 
 		if ( 'added' === $footer_result ) {
@@ -187,14 +189,20 @@ final class MGD_AI_Image_Labels_AI_Philosophy {
 	 * Sucht nur eine von diesem Plugin markierte Seite, nie allein nach Titel.
 	 */
 	private static function find_existing_page_id(): int {
+        $known = absint(get_option(self::PAGE_ID_OPTION, 0));
+        $post = $known ? get_post($known) : null;
+        if ($post && $post->post_type === 'page' && !in_array($post->post_status, array('trash', 'auto-draft'), true) && get_post_meta($known, self::PAGE_META_KEY, true) === '1') {
+            return $known;
+        }
+        // Einmaliger Rückgriff für alte Installationen oder eine inzwischen gelöschte Seite.
 		$pages = get_posts(
 			array(
 				'post_type'      => 'page',
 				'post_status'    => 'any',
 				'posts_per_page' => 1,
 				'fields'         => 'ids',
-				'meta_key'       => self::PAGE_META_KEY,
-				'meta_value'     => '1',
+				'meta_key'       => self::PAGE_META_KEY, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Nur explizite Seitenerstellung; danach verifizierte ID-Option statt Meta-Suche.
+				'meta_value'     => '1', // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Gehört zum begrenzten Rückgriff für alte Installationen.
 			)
 		);
 

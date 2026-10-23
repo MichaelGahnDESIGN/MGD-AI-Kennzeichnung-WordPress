@@ -1,3 +1,1 @@
-FILE: includes/class-ai-philosophy.php
-[{"line":196,"column":17,"type":"WARNING","code":"WordPress.DB.SlowDBQuery.slow_db_query_meta_key","message":"Detected usage of meta_key, possible slow query.","docs":""},{"line":197,"column":17,"type":"WARNING","code":"WordPress.DB.SlowDBQuery.slow_db_query_meta_value","message":"Detected usage of meta_value, possible slow query.","docs":""}]
-
+Success: Checks complete. No errors found.

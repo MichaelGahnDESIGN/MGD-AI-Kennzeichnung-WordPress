@@ -1,20 +1,15 @@
-# Plugin Check – aktualisierter lokaler Lauf
+# Plugin Check – nachgezogene Warnungen
 
-Stand: 23.10.2026. Kandidat 1.0.7; WordPress 7.1.3, PHP 8.3, offizieller Plugin Check 2.1.0 mit Runtime-Bootstrap.
+Kandidat 1.0.7. Lokaler offizieller Plugin Check 2.1.0 auf WordPress 7.1.3/PHP 8.3 mit Runtime-Bootstrap: **0 Fehler, 0 statische Warnungen**. Der vollständige lokale Bericht steht in `plugin-check.txt`. Der zusätzliche wp-env-Lauf in GitHub Actions kann funktional notwendige Enqueue-Scope-Hinweise ausgeben; sein vollständiger Bericht gehört zur Paketübergabe.
 
-**0 Fehler, 2 Warnungen.** Alle Prüfgruppen aktiv, keine Fehlercodes ausgeschlossen. Vollständiger Bericht: `plugin-check.txt`.
+## Tatsächliche Änderungen
 
-- `WordPress.DB.SlowDBQuery.slow_db_query_meta_key`: 1
-- `WordPress.DB.SlowDBQuery.slow_db_query_meta_value`: 1
+Die AI-Philosophie-Seite wird nach der ersten Wiedererkennung über ihre gespeicherte ID geladen. Die ID wird gegen Seitentyp, Status und eigenen Meta-Marker geprüft. Nur für alte Installationen oder nach einer gelöschten Seite bleibt die begrenzte Meta-Suche erhalten; hierfür sind zwei präzise begründete SQL-Performance-Ausnahmen gesetzt. Der Bildkennzeichnungsstil muss weiterhin auf allen Seitentypen verfügbar sein, auch für Theme-, Divi- und nachgeladene Bilder.
 
-Die CI läuft zusätzlich mit einer eigenen wp-env-Installation und kann andere Laufzeit-/Performance-Hinweise liefern. Die Gesamtübergabe bewahrt beide Rohberichte getrennt auf. Ein grüner Lauf ist keine WordPress.org-Zulassung.
+## Umgang mit Prüfregeln
 
-## Prüfung der Resthinweise
+Keine Prüfgruppe und kein Laufzeitcheck wird ausgeschaltet. Technisch notwendige Direktabfragen, rein lesende URL-Auswahl, signierte öffentliche Tokens und die feste Cache-Konstante sind nach Einzelprüfung mit dem jeweils engsten PHPCS-Code und einer Begründung an der konkreten Stelle gekennzeichnet. Diese statischen Einzel-Ausnahmen sind **keine zusätzlichen Sicherheitsprüfungen** und werden ausdrücklich offengelegt. Verzeichnis: `GEPRUEFTE-AUSNAHMEN.md`. Keine Zusage einer WordPress.org-Zulassung.
 
-Eigene Plugin-Tabellen werden über das WordPress-Präfix und feste Namen erzeugt. Die Laufzeitabfragen binden Tabellenbezeichner mit `%i` und Werte mit `%s`/`%d`. Direkte Abfragen bleiben für eigene Tabellen notwendig. Ein Cache für Empfänger-, Lese-, Audit- und Downloadstatus wurde nicht ergänzt: Änderungen müssen unmittelbar sichtbar bleiben. Hinweise zu Schemaänderungen gehören zur Installation bzw. ausdrücklich gewählten Datenlöschung. Die SQL-Änderungen wurden mit echten Datenbankzugriffen in der lokalen Testkopie geprüft.
+## Nachweise
 
-Die Meta-Abfrage ist auf die eigene AI-Philosophie-Seite begrenzt und dient ihrer Wiedererkennung, damit keine Seite doppelt angelegt wird. Der Hinweis beschreibt die möglichen Kosten einer Meta-Suche; die Metadatenstruktur wurde für diesen Vorbereitungsschritt nicht migriert.
-
-## Weitere Belege
-
-Sieben Backends tatsächlich im Browser geöffnet, keine JavaScript-Ausnahmen; echte Screenshots mit künstlichen Daten. 22 lokale Integrationstests zu Formularschutz, Herstellerlink, Entwurf, Menü und privaten/öffentlichen Daten. PHP-Syntax und Verzeichnis-Paketvertrag geprüft. Kein Produktivsystem verändert und keine Einreichung ausgelöst.
+41 Integrationstests bestanden: ursprüngliche 22 Schutzgrenzen-/Datenprüfungen plus 19 Cache-, Invalidierungs-, Empfänger- und AI-Seiten-ID-Prüfungen. Browser: keine Giveaway-Ressourcen ohne Formular, normale und nach wp_head gerenderte Shortcodes, Modal/Escape, 390px sowie echter CSV-Multipart-Import. Ungültige Upload-Nonce und falsche Endung werden abgewiesen. PHP-Syntax aller 86 Laufzeitdateien unter PHP 8.1 und der 15 MCP-Dateien zusätzlich unter PHP 7.4 geprüft. Keine produktiven Daten, keine Live-Einreichung.
