@@ -1,5 +1,13 @@
 # Änderungsprotokoll
 
+## 1.0.6 – 23.10.2026
+
+- Neue Plugin-Kollektion mit eigenen Icons, Produktkarten, lokaler Suche und Filtern.
+- Details im tastaturbedienbaren Dialog; bewusste Installation ohne automatische Aktivierung.
+- Vollständiger Ersatzkatalog bei Feed-Ausfall; alle sieben bekannten WordPress-Plugins werden berücksichtigt.
+- Installationsstatus frisch ermitteln, ZIP-Assets gezielt prüfen und native WordPress-Updateaktionen verwenden.
+- Lokale Browser-, Rechte-, Nonce-, Paket- und Installationstests dokumentiert; kein Kunden-Deployment.
+
 ## 1.0.4 – 2026-10-22
 
 - Plugin-Icon lokal eingebunden und im Release-Paket enthalten.
