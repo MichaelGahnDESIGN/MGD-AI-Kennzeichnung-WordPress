@@ -1,0 +1,6 @@
+{
+  "runtime": ".",
+  "main": "mgd-ai-image-labels.php",
+  "version": "1.0.6",
+  "slug": "mgd-ai-image-labels"
+}
