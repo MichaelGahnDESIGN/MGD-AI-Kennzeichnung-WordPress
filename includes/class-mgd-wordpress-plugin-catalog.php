@@ -37,7 +37,7 @@ if ( ! class_exists( 'MGD_WordPress_Plugin_Catalog_V4' ) ) {
                 }
             }
             foreach ( $wp_filter as $hook => $filter ) {
-                if ( ! str_contains( $hook, '_page_mgd-wordpress-plugin-catalog' ) ) { continue; }
+                if ( false === strpos( $hook, '_page_mgd-wordpress-plugin-catalog' ) ) { continue; }
                 foreach ( $filter->callbacks as $priority => $callbacks ) {
                     foreach ( $callbacks as $entry ) {
                         $callback = $entry['function'];

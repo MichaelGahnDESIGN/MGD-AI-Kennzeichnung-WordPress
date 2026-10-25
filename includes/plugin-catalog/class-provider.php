@@ -82,7 +82,7 @@ final class MGD_Catalog_V4_Provider {
     }
 
     public function valid_download( $url, string $repo ): bool {
-        if ( ! is_string( $url ) || ! str_starts_with( $url, 'https://github.com/' . self::OWNER . '/' . $repo . '/releases/download/' ) || ! preg_match( '~^https://github\.com/[^?#\s]+\.zip$~iD', $url ) ) { return false; }
+        if ( ! is_string( $url ) || 0 !== strpos( $url, 'https://github.com/' . self::OWNER . '/' . $repo . '/releases/download/' ) || ! preg_match( '~^https://github\.com/[^?#\s]+\.zip$~iD', $url ) ) { return false; }
         foreach ( explode( '/', rawurldecode( wp_parse_url( $url, PHP_URL_PATH ) ) ) as $part ) {
             if ( in_array( $part, array( '.', '..' ), true ) || preg_match( '/[\x00-\x1f\x7f]/', $part ) ) { return false; }
         }
