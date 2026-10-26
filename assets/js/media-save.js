@@ -16,14 +16,14 @@
 
 	/** Gibt das aktive Detailpanel des aktuell bearbeiteten WordPress-Anhangs zurück. */
 	function getDialogScope( button ) {
-		var scope = button.closest( '.attachment-details' );
+		var scope = button.closest( '.attachment-details, .attachment-info, .compat-attachment-fields' );
 
 		if ( scope && isVisible( scope ) ) {
 			return scope;
 		}
 
-		var modal = button.closest( '.media-modal, .media-frame-content' );
-		var panels = modal ? Array.prototype.slice.call( modal.querySelectorAll( '.attachment-details' ) ) : [];
+		var modal = button.closest( '.media-modal, .media-frame-content, .media-frame' );
+		var panels = modal ? Array.prototype.slice.call( modal.querySelectorAll( '.attachment-details, .attachment-info, .compat-attachment-fields' ) ) : [];
 
 		for ( var index = panels.length - 1; index >= 0; index-- ) {
 			if ( isVisible( panels[ index ] ) ) {
@@ -34,17 +34,53 @@
 		return null;
 	}
 
-	/** Liest ein Feld aus dem aktiven Panel, auch wenn WordPress {{ID}} beibehält. */
-	function getField( scope, attachmentId, fieldName ) {
+	/**
+	 * Prüft die zwei WordPress-Feldnamen sowie die semantischen Attribute, die
+	 * unterschiedliche Medienansichten je nach WordPress-Version ausgeben.
+	 */
+	function isMatchingField( field, attachmentId, fieldName ) {
 		var concreteName = 'attachments[' + attachmentId + '][' + fieldName + ']';
 		var templateName = 'attachments[{{ID}}][' + fieldName + ']';
+		var id = field.getAttribute( 'id' ) || '';
+
+		return concreteName === field.getAttribute( 'name' ) ||
+			templateName === field.getAttribute( 'name' ) ||
+			fieldName === field.getAttribute( 'data-setting' ) ||
+			new RegExp( '(?:^|[-_])' + fieldName + '$' ).test( id );
+	}
+
+	/** Liest ein Feld aus dem aktiven Panel, auch wenn WordPress {{ID}} beibehält. */
+	function getField( scope, attachmentId, fieldName ) {
 		var fields = scope.querySelectorAll( '[name]' );
 
 		for ( var index = 0; index < fields.length; index++ ) {
-			var fieldNameValue = fields[ index ].getAttribute( 'name' );
-
-			if ( concreteName === fieldNameValue || templateName === fieldNameValue ) {
+			if ( isMatchingField( fields[ index ], attachmentId, fieldName ) ) {
 				return fields[ index ];
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * WordPress kann Zusatzfelder in einen eigenen Kompatibilitätsblock auslagern.
+	 * Die Suche bleibt immer beim geklickten Button und greift nicht auf verdeckte
+	 * Dialoge oder andere Medien zu.
+	 */
+	function getActiveField( button, scope, attachmentId, fieldName ) {
+		var roots = [
+			scope,
+			button ? button.closest( '.compat-attachment-fields' ) : null,
+			button ? button.closest( '.attachment-details, .attachment-info' ) : null
+		];
+
+		for ( var index = 0; index < roots.length; index++ ) {
+			if ( roots[ index ] ) {
+				var field = getField( roots[ index ], attachmentId, fieldName );
+
+				if ( field ) {
+					return field;
+				}
 			}
 		}
 
@@ -64,7 +100,7 @@
 		};
 
 		Object.keys( mapping ).forEach( function( fieldName ) {
-			var field = getField( scope, attachmentId, fieldName );
+			var field = getActiveField( null, scope, attachmentId, fieldName );
 
 			if ( field ) {
 				field.value = mapping[ fieldName ];
@@ -142,12 +178,12 @@
 
 		var attachmentId = Number( button.getAttribute( 'data-mgd-ail-save' ) );
 		var scope = getDialogScope( button );
-		var statusField = scope ? getField( scope, attachmentId, 'mgd_ail_status' ) : null;
-		var positionField = scope ? getField( scope, attachmentId, 'mgd_ail_position' ) : null;
-		var themeField = scope ? getField( scope, attachmentId, 'mgd_ail_theme' ) : null;
+		var statusField = scope ? getActiveField( button, scope, attachmentId, 'mgd_ail_status' ) : null;
+		var positionField = scope ? getActiveField( button, scope, attachmentId, 'mgd_ail_position' ) : null;
+		var themeField = scope ? getActiveField( button, scope, attachmentId, 'mgd_ail_theme' ) : null;
 
 		if ( ! attachmentId || ! scope || ! statusField || ! positionField || ! themeField || ! button.getAttribute( 'data-mgd-ail-ajax-url' ) || ! button.getAttribute( 'data-mgd-ail-nonce' ) ) {
-			setFeedback( button, 'Der aktuelle Bild-Anhang konnte nicht bestimmt werden. Bitte schließe den Dialog und öffne das Bild erneut.', true );
+			setFeedback( button, 'Die Einstellfelder dieses Bildes sind noch nicht bereit. Bitte warte kurz und öffne das Bild bei Bedarf erneut.', true );
 			return;
 		}
 

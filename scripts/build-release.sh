@@ -10,7 +10,7 @@
 
 set -euo pipefail
 
-release_version="${1:-1.0.8}"
+release_version="${1:-1.0.9}"
 project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 output_dir="${project_root}/dist"
 package_name="mgd-ai-image-labels-${release_version}.zip"

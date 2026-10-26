@@ -120,8 +120,14 @@ $plugin_source = file_get_contents( dirname( __DIR__ ) . '/mgd-ai-image-labels.p
 if ( false === $plugin_source ) {
 	throw new RuntimeException( 'Die Hauptdatei des Plugins konnte nicht gelesen werden.' );
 }
-mgd_ail_updater_assert_contains( 'Version:            1.0.5', $plugin_source, 'Die Plugin-Metadaten enthalten die veröffentlichte Folgeversion 1.0.5 aus dem neuen Repository.' );
+
+if ( ! preg_match( '/^ \* Version:\s+([0-9]+(?:\.[0-9]+){2})$/m', $plugin_source, $matches ) ) {
+	throw new RuntimeException( 'Die Plugin-Metadaten enthalten keine gültige dreiteilige Versionsnummer.' );
+}
+
+$plugin_version = $matches[1];
+mgd_ail_updater_assert_contains( 'Version:            ' . $plugin_version, $plugin_source, 'Die Plugin-Metadaten enthalten die aktuelle veröffentlichte Versionsnummer.' );
 mgd_ail_updater_assert_contains( 'Update URI:         https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress', $plugin_source, 'Die Plugin-Metadaten benennen die zukünftige eindeutige öffentliche Update-Quelle.' );
-mgd_ail_updater_assert_contains( "define( 'MGD_AI_IMAGE_LABELS_VERSION', '1.0.5' );", $plugin_source, 'Die Laufzeit-Konstante entspricht der Plugin-Version.' );
+mgd_ail_updater_assert_contains( "define( 'MGD_AI_IMAGE_LABELS_VERSION', '" . $plugin_version . "' );", $plugin_source, 'Die Laufzeit-Konstante entspricht der Plugin-Version.' );
 
 echo "PASS: Öffentliche GitHub-Releases werden sicher normalisiert.\n";

@@ -343,9 +343,17 @@ Tel.: +49 (0) 151 59156639
 E-Mail: Anfrage@Michael-Gahn.de
 <!-- /MGD-LEGAL -->
 
-## Plugin-Icon – Version 1.0.8
+## Plugin-Icon – Version 1.0.9
 
 Eigenes lokales Icon in der WordPress-Pluginliste. Die Grafik ist im Release-Paket enthalten; keine externen Bilddienste und keine neuen gespeicherten Daten. Vorhandene Funktionen und Einstellungen bleiben unverändert.
+
+### 1.0.9 – Medien speichern
+
+Die Kennzeichnung wird nun auch dann zuverlässig gespeichert, wenn WordPress
+die Zusatzfelder in einen separaten Kompatibilitätsbereich des aktiven
+Medienfensters verschiebt. Die Suche bleibt auf das gerade geöffnete Bild
+beschränkt; Berechtigungs- und Nonce-Prüfung des geschützten AJAX-Endpunkts
+bleiben unverändert.
 
 ## 1.0.5 – Plugin-Verwaltung
 

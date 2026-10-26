@@ -1,5 +1,17 @@
 # Änderungsprotokoll
 
+## 1.0.9 – 26.10.2026
+
+- Das Speichern im WordPress-Medienfenster erkennt nun zusätzlich den aktiven
+  Kompatibilitätsbereich der Medienansicht. Dadurch bleiben Status, Position
+  und Glas-Variante auch in abweichenden WordPress-Dialogvarianten am gerade
+  geöffneten Bild gebunden.
+- Die Auswahl bleibt auf den geklickten und sichtbaren Anhang begrenzt;
+  verdeckte Dialoge oder andere Medien werden nicht als Fallback verwendet.
+- Der Update-Regressionstest leitet die erwartete Versionsnummer künftig aus
+  dem Plugin-Header ab. Ein späteres Release kann dadurch nicht mehr an einer
+  veralteten Testnummer scheitern.
+
 ## 1.0.8 – 24.10.2026
 
 - Sieben eigene Kartenmotive, lokal als kleine WebP-Dateien eingebunden.

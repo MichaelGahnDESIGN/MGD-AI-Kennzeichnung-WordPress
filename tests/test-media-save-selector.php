@@ -19,6 +19,10 @@ if ( false === strpos( $script, 'attachments[{{ID}}]' ) ) {
 	throw new RuntimeException( 'Der Medien-Speicherbutton unterstützt den WordPress-Platzhalter {{ID}} noch nicht.' );
 }
 
+if ( false === strpos( $script, "field.getAttribute( 'data-setting' )" ) || false === strpos( $script, 'compat-attachment-fields' ) ) {
+	throw new RuntimeException( 'Der Medien-Speicherbutton muss WordPress-Kompatibilitätsfelder in der aktiven Medienansicht erkennen.' );
+}
+
 if ( false === strpos( $script, 'document.addEventListener( \'click\'' ) ) {
 	throw new RuntimeException( 'Der Medien-Speicherbutton muss ohne jQuery per Ereignisdelegation arbeiten.' );
 }
