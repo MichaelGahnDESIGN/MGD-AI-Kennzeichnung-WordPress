@@ -1,5 +1,12 @@
 # Änderungsprotokoll
 
+## 1.0.10 – 27.10.2026
+
+- Icons und Hintergründe der Karten unter „Weitere Plugins" kommen jetzt aus
+  theme.michael-gahn.de. Der Server holt sie einmal und speichert sie lokal;
+  der Browser lädt nichts extern. Ohne Bild bleibt das mitgelieferte Motiv.
+- Versionen werden ohne führendes „v" angezeigt.
+
 ## 1.0.9 – 26.10.2026
 
 - Das Speichern im WordPress-Medienfenster erkennt nun zusätzlich den aktiven

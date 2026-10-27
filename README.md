@@ -343,9 +343,13 @@ Tel.: +49 (0) 151 59156639
 E-Mail: Anfrage@Michael-Gahn.de
 <!-- /MGD-LEGAL -->
 
-## Plugin-Icon – Version 1.0.9
+## Plugin-Icon – Version 1.0.10
 
 Eigenes lokales Icon in der WordPress-Pluginliste. Die Grafik ist im Release-Paket enthalten; keine externen Bilddienste und keine neuen gespeicherten Daten. Vorhandene Funktionen und Einstellungen bleiben unverändert.
+
+### 1.0.10 – Icons und Hintergründe aus dem Feed
+
+Die Karten unter „Weitere Plugins" zeigen Icons und Hintergründe von theme.michael-gahn.de. Der Server holt die Bilder einmal und speichert sie lokal; der Browser lädt nichts extern. Ohne Bild bleibt das mitgelieferte Motiv. Versionen werden ohne führendes „v" angezeigt.
 
 ### 1.0.9 – Medien speichern
 
