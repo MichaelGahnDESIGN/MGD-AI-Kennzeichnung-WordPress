@@ -263,21 +263,49 @@ Update-Kanal vorbereitet; ab 1.0.3 werden reguläre Updates über diese Adresse
 veröffentlicht. Der Plugin-Ordner `mgd-ai-image-labels`, die Metaschlüssel und
 alle Kennzeichnungswerte bleiben unverändert.
 
-Jede Version erhält einen Git-Tag im Format `vX.Y.Z` und ein ZIP-Release, dessen oberster Ordner `mgd-ai-image-labels` heißt. WordPress erkennt neuere öffentliche GitHub-Releases im üblichen Plugin-Update-Zyklus und zeigt sie in **Dashboard → Aktualisierungen** beziehungsweise **Plugins** an. Das Release-Paket enthält nur die zur Laufzeit und Dokumentation erforderlichen Plugin-Dateien; Entwicklungs-Worktrees, Tests, lokale Visualisierungen, Archivdateien und Konfigurationsgeheimnisse gehören nicht hinein.
+### Updates ab Version 1.1.0
 
-Die Prüfung ruft höchstens alle zwölf Stunden ausschließlich die öffentliche GitHub-Release-API dieses Repositories auf. Sie benötigt keine Zugangsdaten und überträgt keine Bilder, Bildmetadaten, Besucher- oder Nutzerdaten. Ein Release wird nur angeboten, wenn die Version neuer ist und eine exakt passende ZIP-Datei über HTTPS, ohne abweichenden Port und aus dem festen Release-Pfad dieses Repositories bereitsteht. Bei Netzwerk- oder Validierungsfehlern bleibt WordPress beim bisherigen Stand und führt kein Update aus.
+Ab Version 1.1.0 kommen Updates von **theme.michael-gahn.de**:
 
-Automatische WordPress-Updates können Website-Administratoren wie bei anderen Plugins bewusst in der Plugin-Verwaltung aktivieren oder deaktivieren. Vor jedem Update empfiehlt sich ein getestetes Backup, zum Beispiel über UpdraftPlus.
+1. WordPress fragt dort nach, ob es eine neue Version gibt.
+2. Gibt es eine, steht sie wie bei jedem Plugin unter **Dashboard → Aktualisierungen**.
+3. Die ZIP-Datei kommt aus dem GitHub-Release dieses Repositorys.
+4. Vor der Installation prüft das Plugin Größe und SHA-256-Prüfsumme. Stimmt etwas nicht, wird nichts installiert.
+
+Automatische Updates bleiben aus, bis du sie selbst einschaltest. Mach vor jedem Update eine Sicherung, zum Beispiel mit UpdraftPlus.
+
+Jede Version hat einen Git-Tag im Format `vX.Y.Z` und ein ZIP im Release. Der oberste Ordner im ZIP heißt immer `mgd-ai-image-labels`.
+
+### Seite „Info und Updates“
+
+Unter **Medien → Info und Updates** siehst du:
+
+- die installierte Version,
+- ob es ein Update gibt,
+- „Weitere Plugins“ von Michael Gahn DESIGN,
+- den Schalter **Installation bei Michael Gahn DESIGN melden**.
+
+### Installation melden
+
+Das Plugin meldet sich einmal bei theme.michael-gahn.de an und danach höchstens einmal am Tag. Gesendet werden nur: Plugin, Version, Shopsystem, Domain und eine zufällige ID. Keine Bilder, keine Besucher- oder Kundendaten.
+
+So schaltest du es aus:
+
+1. Öffne **Medien → Info und Updates**.
+2. Entferne den Haken bei **Installation bei Michael Gahn DESIGN melden**.
+3. Speichern. Der Eintrag auf theme.michael-gahn.de wird gelöscht.
+
+Löschst du das Plugin in WordPress, wird der Eintrag auch gelöscht. Deine Kennzeichnungen und Einstellungen bleiben dabei in der Datenbank.
 
 ## Sicherheit und Datenschutz
 
 - Alle Eingaben werden serverseitig auf erlaubte Werte beschränkt.
 - Änderungen erfordern die passende WordPress-Berechtigung und einen Nonce.
-- Es werden keine personenbezogenen Daten, Bilder oder Analysedaten an externe Dienste übertragen.
+- Es werden keine Bilder, Besucher- oder Analysedaten an externe Dienste übertragen. Nur die abschaltbare Meldung der Installation (Plugin, Version, Shopsystem, Domain, zufällige ID) geht an theme.michael-gahn.de.
 - Das Plugin speichert keine API-Schlüssel, Passwörter oder Tokens.
 - Die AI-Philosophie wird ausschließlich in der lokalen WordPress-Datenbank gespeichert; externe Links öffnen mit `noopener noreferrer`.
 - Automatische Footer-Änderungen erfolgen nur bei einer einzigen eindeutig erkannten Footer-Menüposition; sonst bleibt die Navigation unangetastet.
-- Die Update-Prüfung verwendet keine GitHub-Zugangsdaten und akzeptiert nur HTTPS-Pakete vom festgelegten öffentlichen GitHub-Repository.
+- Die Update-Prüfung braucht keine Zugangsdaten und installiert nur ZIP-Dateien aus den GitHub-Releases dieses Repositorys, deren Größe und Prüfsumme stimmen.
 - Bitte veröffentliche niemals `wp-config.php`, Backups, Logs mit personenbezogenen Daten oder Zugangsdaten im Repository.
 
 Eine Meldung von Sicherheitslücken erfolgt gemäß [SECURITY.md](SECURITY.md), nicht über ein öffentliches Issue.
@@ -342,6 +370,10 @@ Deutschland
 Tel.: +49 (0) 151 59156639  
 E-Mail: Anfrage@Michael-Gahn.de
 <!-- /MGD-LEGAL -->
+
+## Version 1.1.0 – Updates von theme.michael-gahn.de
+
+Updates kommen jetzt von theme.michael-gahn.de (mit Prüfsumme). Neue Seite **Medien → Info und Updates**. Die Installation meldet sich an, abschaltbar. Mehr dazu unter „Releases und Updates“.
 
 ## Plugin-Icon – Version 1.0.10
 

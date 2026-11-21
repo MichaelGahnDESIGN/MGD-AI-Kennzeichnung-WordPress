@@ -1,5 +1,20 @@
 # Änderungsprotokoll
 
+## 1.1.0 – 21.11.2026
+
+- Updates kommen jetzt von theme.michael-gahn.de. WordPress prüft vor der
+  Installation Größe und SHA-256-Prüfsumme des ZIP aus dem GitHub-Release.
+  Automatische Updates bleiben aus, bis du sie selbst einschaltest.
+- Neue Seite **Medien → Info und Updates**: Version, Update-Stand,
+  „Weitere Plugins“ und der Schalter „Installation bei Michael Gahn DESIGN melden“.
+- Das Plugin meldet sich einmal bei theme.michael-gahn.de an und danach
+  höchstens einmal am Tag (Plugin, Version, Shopsystem, Domain, zufällige ID).
+  Der Schalter auf der Seite „Info und Updates“ stellt das ab und löscht den
+  Eintrag. Beim Löschen des Plugins wird der Eintrag ebenfalls entfernt.
+- Der alte GitHub-Updater und die alte Seite „Weitere Plugins“ sind
+  abgeschaltet. Ihre Zwischenspeicher werden einmal aufgeräumt.
+- Kennzeichnungen an den Bildern und alle Einstellungen bleiben unverändert.
+
 ## 1.0.10 – 27.10.2026
 
 - Icons und Hintergründe der Karten unter „Weitere Plugins" kommen jetzt aus

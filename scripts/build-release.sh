@@ -10,7 +10,7 @@
 
 set -euo pipefail
 
-release_version="${1:-1.0.10}"
+release_version="${1:-1.1.0}"
 project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 output_dir="${project_root}/dist"
 package_name="mgd-ai-image-labels-${release_version}.zip"
@@ -27,7 +27,7 @@ trap cleanup EXIT
 mkdir -p "${package_root}" "${output_dir}"
 
 # Diese Liste ist die vollständige, bewusst kleine öffentliche Paketoberfläche.
-for entry in assets includes views mgd-ai-image-labels.php README.md CHANGELOG.md SECURITY.md LICENSE; do
+for entry in assets includes views mgd-ai-image-labels.php uninstall.php README.md CHANGELOG.md SECURITY.md LICENSE; do
 	if [[ ! -e "${project_root}/${entry}" ]]; then
 		echo "Fehlende Release-Datei: ${entry}" >&2
 		exit 1

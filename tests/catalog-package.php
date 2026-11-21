@@ -25,5 +25,19 @@ foreach (array('class-provider.php', 'view.php', 'plugins.json') as $name) {
 }
 $bootstrap = $main;
 foreach (glob($runtime . '/includes/*.php') as $file) { $bootstrap .= file_get_contents($file); }
-mgd_catalog_assert((bool) preg_match('/new\s+\\\\?MGD_WordPress_Plugin_Catalog_V4\s*\(/', $bootstrap), 'Versionsfester Einstiegspunkt');
+// ab 1.1.0: Weitere Plugins + Updates über den Baukasten, alte Updater und Katalog V4 nicht mehr angemeldet
+mgd_catalog_assert(str_contains($bootstrap, 'Setup::dashboard('), 'Dashboard vom Baukasten');
+mgd_catalog_assert(str_contains($bootstrap, 'MGD_AI_Image_Labels_Plugin::$updater, $list, false, \'\''), 'Lizenz-Baustein aus');
+mgd_catalog_assert(str_contains($bootstrap, "PRODUCT = 'mgd-ai-kennzeichnung-wordpress'"), 'Produktname mgd-ai-kennzeichnung-wordpress');
+mgd_catalog_assert(str_contains($main, 'Setup::updater( __FILE__, MGD_AI_Image_Labels_Plugin::PRODUCT'), 'Baukasten-Updater angemeldet');
+mgd_catalog_assert(str_contains($main, 'Setup::cleanupLegacy('), 'Alte Caches werden aufgeräumt');
+mgd_catalog_assert(!str_contains($main, 'MGD_Plugin_Admin_Tools_20261023::register'), 'Admin-Tools-Updater abgeschaltet');
+mgd_catalog_assert(!preg_match('/GitHub_Updater::register\s*\(/', $bootstrap), 'Eigener GitHub-Updater abgeschaltet');
+mgd_catalog_assert(!preg_match('/new\s+\\\\?MGD_WordPress_Plugin_Catalog_V4\s*\(\s*\)\s*->\s*register/', $bootstrap), 'Alte Katalogseite abgeschaltet');
+mgd_catalog_assert(is_file($runtime . '/includes/Kit/Platform/WordPress/Updater.php'), 'Baukasten vorhanden');
+$uninstall = (string) file_get_contents($runtime . '/uninstall.php');
+mgd_catalog_assert(str_contains($uninstall, "Setup::uninstall( 'mgd-ai-kennzeichnung-wordpress', 'wordpress' )") && str_contains($uninstall, 'WP_UNINSTALL_PLUGIN'), 'uninstall.php meldet ab');
+foreach ($metadata as $repo => $item) { mgd_catalog_assert((bool) preg_match('/^[a-z0-9]+(-[a-z0-9]+)*$/', (string) ($item['slug'] ?? '')), 'Katalog-Kennung ' . $repo); }
+$build = (string) file_get_contents($root . '/scripts/build-release.sh');
+mgd_catalog_assert(str_contains($build, 'uninstall.php') && str_contains($build, '${1:-' . $config['version'] . '}'), 'Paket enthält uninstall.php und aktuelle Version');
 echo "PASS Pluginversion, sieben Katalogeinträge, lokale Icons und vollständige Laufzeitdateien\n";
