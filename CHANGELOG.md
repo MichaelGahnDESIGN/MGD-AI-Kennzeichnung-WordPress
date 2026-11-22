@@ -1,5 +1,13 @@
 # Änderungsprotokoll
 
+## 1.1.1 – 22.11.2026
+
+- Neue Ansicht **Weitere Plugins** auf der Seite „Info und Updates“: Bilder,
+  Kategorien, Suche, Filter und ein Fenster mit Details. Kostenlose Plugins
+  lassen sich dort mit „Installieren“ hinzufügen. Sie werden nicht aktiviert.
+- Die alte Seite „Weitere Plugins“ (MGD Plugin-Kollektion) ist jetzt ganz entfernt.
+- Kennzeichnungen an den Bildern und alle Einstellungen bleiben unverändert.
+
 ## 1.1.0 – 21.11.2026
 
 - Updates kommen jetzt von theme.michael-gahn.de. WordPress prüft vor der

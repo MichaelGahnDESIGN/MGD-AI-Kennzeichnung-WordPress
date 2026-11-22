@@ -35,6 +35,10 @@ mgd_catalog_assert(!str_contains($main, 'MGD_Plugin_Admin_Tools_20261023::regist
 mgd_catalog_assert(!preg_match('/GitHub_Updater::register\s*\(/', $bootstrap), 'Eigener GitHub-Updater abgeschaltet');
 mgd_catalog_assert(!preg_match('/new\s+\\\\?MGD_WordPress_Plugin_Catalog_V4\s*\(\s*\)\s*->\s*register/', $bootstrap), 'Alte Katalogseite abgeschaltet');
 mgd_catalog_assert(is_file($runtime . '/includes/Kit/Platform/WordPress/Updater.php'), 'Baukasten vorhanden');
+// ab 1.1.1: alte Seite V4 komplett weg, neue Ansicht Weitere Plugins mit Installieren-Knopf
+mgd_catalog_assert(!is_file($runtime . '/includes/class-mgd-wordpress-plugin-catalog.php') && !str_contains($bootstrap, 'MGD_WordPress_Plugin_Catalog_V4'), 'Alte Katalogseite V4 entfernt');
+mgd_catalog_assert(is_file($runtime . '/includes/Kit/Platform/WordPress/CatalogInstaller.php') && is_file($runtime . '/includes/Kit/Platform/WordPress/assets/kit-catalog.js'), 'Neue Ansicht Weitere Plugins im Baukasten');
+mgd_catalog_assert(str_contains($bootstrap, "add_action( 'admin_init', array( self::class, 'actions' ) )") && str_contains($bootstrap, 'Setup::catalogActions( MGD_AI_Image_Labels_Plugin::PRODUCT'), 'Installieren-Knopf früh angemeldet');
 $uninstall = (string) file_get_contents($runtime . '/uninstall.php');
 mgd_catalog_assert(str_contains($uninstall, "Setup::uninstall( 'mgd-ai-kennzeichnung-wordpress', 'wordpress' )") && str_contains($uninstall, 'WP_UNINSTALL_PLUGIN'), 'uninstall.php meldet ab');
 foreach ($metadata as $repo => $item) { mgd_catalog_assert((bool) preg_match('/^[a-z0-9]+(-[a-z0-9]+)*$/', (string) ($item['slug'] ?? '')), 'Katalog-Kennung ' . $repo); }

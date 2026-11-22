@@ -69,6 +69,6 @@ final class MGD_AI_Image_Labels_Plugin {
 		// Info, Updates, Weitere Plugins, Installation melden - vom Baukasten
 		MGD_AI_Image_Labels_Info_Page::register();
 
-		// alter GitHub-Updater + alte Katalogseite (V4) ab 1.1.0 nicht mehr angemeldet, Dateien fliegen erst in der Endversion raus
+		// alter GitHub-Updater ab 1.1.0 nicht mehr angemeldet, alte Katalogseite (V4) ab 1.1.1 ganz raus
 	}
 }

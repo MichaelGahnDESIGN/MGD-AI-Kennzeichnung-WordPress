@@ -21,6 +21,16 @@ final class MGD_AI_Image_Labels_Info_Page {
 
 	public static function register(): void {
 		add_action( 'admin_menu', array( self::class, 'menu' ) );
+		add_action( 'admin_init', array( self::class, 'actions' ) );
+	}
+
+	// Installieren-Knopf bei Weitere Plugins > admin-post.php, muss vor dem Seitenaufbau dran sein
+	public static function actions(): void {
+		\Mgd\AiImageLabels\Kit\Platform\WordPress\Setup::catalogActions( MGD_AI_Image_Labels_Plugin::PRODUCT, self::recommendations(), admin_url( 'upload.php?page=' . MGD_AI_Image_Labels_Plugin::INFO_PAGE ) );
+	}
+
+	public static function recommendations(): ?\Mgd\AiImageLabels\Kit\Catalog\Recommendations {
+		return \Mgd\AiImageLabels\Kit\Platform\WordPress\Setup::recommendations( MGD_AI_Image_Labels_Plugin::PRODUCT, 'wordpress', self::SELF_SLUG, self::fallback(), self::SELF_REPO );
 	}
 
 	public static function menu(): void {
@@ -37,7 +47,7 @@ final class MGD_AI_Image_Labels_Info_Page {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die( 'Nicht berechtigt.', '', array( 'response' => 403 ) );
 		}
-		$list  = \Mgd\AiImageLabels\Kit\Platform\WordPress\Setup::recommendations( MGD_AI_Image_Labels_Plugin::PRODUCT, 'wordpress', self::SELF_SLUG, self::fallback(), self::SELF_REPO );
+		$list = self::recommendations();
 		// parent leer = kein eigener Menüpunkt, Lizenz aus
 		$dash = \Mgd\AiImageLabels\Kit\Platform\WordPress\Setup::dashboard( MGD_AI_Image_Labels_Plugin::PRODUCT, 'wordpress', MGD_AI_IMAGE_LABELS_VERSION, 'MGD AI Kennzeichnung', MGD_AI_Image_Labels_Plugin::$updater, $list, false, '' );
 		if ( null === $dash ) {
