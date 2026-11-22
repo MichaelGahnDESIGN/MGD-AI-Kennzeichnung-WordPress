@@ -371,6 +371,17 @@ Tel.: +49 (0) 151 59156639
 E-Mail: Anfrage@Michael-Gahn.de
 <!-- /MGD-LEGAL -->
 
+## Version 1.1.1 – Neue Ansicht „Weitere Plugins“
+
+Auf der Seite **Medien → Info und Updates** gibt es eine neue Ansicht „Weitere Plugins“:
+
+1. Du siehst alle Plugins von Michael Gahn DESIGN mit Bild und Kategorie.
+2. Oben kannst Du suchen und nach Kategorie filtern.
+3. Ein Klick auf eine Karte öffnet ein Fenster mit Details.
+4. Kostenlose Plugins installierst Du mit **Installieren**. Das Plugin wird nur hinzugefügt, nicht eingeschaltet.
+
+Die alte Seite „Weitere Plugins“ gibt es nicht mehr. Deine Einstellungen bleiben, wie sie sind.
+
 ## Version 1.1.0 – Updates von theme.michael-gahn.de
 
 Updates kommen jetzt von theme.michael-gahn.de (mit Prüfsumme). Neue Seite **Medien → Info und Updates**. Die Installation meldet sich an, abschaltbar. Mehr dazu unter „Releases und Updates“.
