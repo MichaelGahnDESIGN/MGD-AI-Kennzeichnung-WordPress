@@ -58,7 +58,7 @@ Setup::tools( __FILE__, 'mgd-ai-kennzeichnung-wordpress', 'wordpress', MGD_AI_IM
 		'page'   => 'mgd-ai-image-labels',
 		'title'  => 'AI Kennzeichnung',
 		'cap'    => 'manage_options',
-		'render' => array( 'MGD_AI_Image_Labels_Admin_Page', 'render_page' ),
+		'render' => static function (): void { MGD_AI_Image_Labels_Admin_Page::render_page(); },
 	),
 	'license'  => false,
 ) );
