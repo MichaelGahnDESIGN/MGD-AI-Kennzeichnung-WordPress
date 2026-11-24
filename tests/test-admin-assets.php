@@ -26,7 +26,7 @@ if ( false === $assets || false === $script ) {
 	throw new RuntimeException( 'Die Verwaltungs-Assets konnten nicht gelesen werden.' );
 }
 
-if ( false === strpos( $assets, "media_page_mgd-ai-image-labels" ) ) {
+if ( false === strpos( $assets, "_page_mgd-ai-image-labels" ) ) {
 	throw new RuntimeException( 'Die Verwaltungs-Assets müssen auf die eigene Medienseite begrenzt bleiben.' );
 }
 

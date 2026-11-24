@@ -290,7 +290,7 @@ final class MGD_AI_Image_Labels_AI_Philosophy {
 				'tab'              => 'ai-philosophy',
 				'mgd_ail_notice'   => rawurlencode( $notice ),
 			),
-			admin_url( 'upload.php' )
+			admin_url( 'admin.php' )
 		);
 
 		wp_safe_redirect( $url );

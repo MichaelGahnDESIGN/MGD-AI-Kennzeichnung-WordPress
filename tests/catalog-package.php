@@ -25,20 +25,18 @@ foreach (array('class-provider.php', 'view.php', 'plugins.json') as $name) {
 }
 $bootstrap = $main;
 foreach (glob($runtime . '/includes/*.php') as $file) { $bootstrap .= file_get_contents($file); }
-// ab 1.1.0: Weitere Plugins + Updates über den Baukasten, alte Updater und Katalog V4 nicht mehr angemeldet
-mgd_catalog_assert(str_contains($bootstrap, 'Setup::dashboard('), 'Dashboard vom Baukasten');
-mgd_catalog_assert(str_contains($bootstrap, 'MGD_AI_Image_Labels_Plugin::$updater, $list, false, \'\''), 'Lizenz-Baustein aus');
+// MGD Tools: Updates, Weitere Plugins, Menü + Einstellungsseite kommen vom Baukasten, alte Updater und Katalog V4 sind weg
+mgd_catalog_assert(str_contains($main, "Setup::tools("), 'MGD Tools vom Baukasten');
+mgd_catalog_assert(str_contains($main, "'license'  => false"), 'Lizenz-Baustein aus');
 mgd_catalog_assert(str_contains($bootstrap, "PRODUCT = 'mgd-ai-kennzeichnung-wordpress'"), 'Produktname mgd-ai-kennzeichnung-wordpress');
-mgd_catalog_assert(str_contains($main, 'Setup::updater( __FILE__, MGD_AI_Image_Labels_Plugin::PRODUCT'), 'Baukasten-Updater angemeldet');
+mgd_catalog_assert(str_contains($main, "Setup::updater( __FILE__, 'mgd-ai-kennzeichnung-wordpress'"), 'Baukasten-Updater angemeldet');
 mgd_catalog_assert(str_contains($main, 'Setup::cleanupLegacy('), 'Alte Caches werden aufgeräumt');
-mgd_catalog_assert(!str_contains($main, 'MGD_Plugin_Admin_Tools_20261023::register'), 'Admin-Tools-Updater abgeschaltet');
-mgd_catalog_assert(!preg_match('/GitHub_Updater::register\s*\(/', $bootstrap), 'Eigener GitHub-Updater abgeschaltet');
-mgd_catalog_assert(!preg_match('/new\s+\\\\?MGD_WordPress_Plugin_Catalog_V4\s*\(\s*\)\s*->\s*register/', $bootstrap), 'Alte Katalogseite abgeschaltet');
-mgd_catalog_assert(is_file($runtime . '/includes/Kit/Platform/WordPress/Updater.php'), 'Baukasten vorhanden');
-// ab 1.1.1: alte Seite V4 komplett weg, neue Ansicht Weitere Plugins mit Installieren-Knopf
-mgd_catalog_assert(!is_file($runtime . '/includes/class-mgd-wordpress-plugin-catalog.php') && !str_contains($bootstrap, 'MGD_WordPress_Plugin_Catalog_V4'), 'Alte Katalogseite V4 entfernt');
-mgd_catalog_assert(is_file($runtime . '/includes/Kit/Platform/WordPress/CatalogInstaller.php') && is_file($runtime . '/includes/Kit/Platform/WordPress/assets/kit-catalog.js'), 'Neue Ansicht Weitere Plugins im Baukasten');
-mgd_catalog_assert(str_contains($bootstrap, "add_action( 'admin_init', array( self::class, 'actions' ) )") && str_contains($bootstrap, 'Setup::catalogActions( MGD_AI_Image_Labels_Plugin::PRODUCT'), 'Installieren-Knopf früh angemeldet');
+mgd_catalog_assert(!str_contains($bootstrap, 'MGD_Plugin_Admin_Tools'), 'Admin-Tools-Baustein ist raus');
+mgd_catalog_assert(!is_file($runtime . '/includes/class-mgd-plugin-admin-tools.php') && !is_file($runtime . '/includes/class-github-updater.php'), 'Alte Updater-Dateien gelöscht');
+mgd_catalog_assert(!str_contains($bootstrap, 'MGD_WordPress_Plugin_Catalog_V4') && !is_file($runtime . '/includes/class-mgd-wordpress-plugin-catalog.php'), 'Alte Katalogseite V4 entfernt');
+mgd_catalog_assert(!str_contains($bootstrap, 'add_media_page') && !str_contains($bootstrap, 'add_menu_page') && !str_contains($bootstrap, 'add_submenu_page'), 'Kein eigenes Menü mehr');
+mgd_catalog_assert(is_file($runtime . '/includes/Kit/Platform/WordPress/Updater.php') && is_file($runtime . '/includes/Kit/Platform/WordPress/Tools.php'), 'Baukasten mit MGD Tools vorhanden');
+mgd_catalog_assert(is_file($runtime . '/assets/icon-128x128.png') && is_file($runtime . '/assets/icon-256x256.png'), 'Plugin-Icons 128 und 256');
 $uninstall = (string) file_get_contents($runtime . '/uninstall.php');
 mgd_catalog_assert(str_contains($uninstall, "Setup::uninstall( 'mgd-ai-kennzeichnung-wordpress', 'wordpress' )") && str_contains($uninstall, 'WP_UNINSTALL_PLUGIN'), 'uninstall.php meldet ab');
 foreach ($metadata as $repo => $item) { mgd_catalog_assert((bool) preg_match('/^[a-z0-9]+(-[a-z0-9]+)*$/', (string) ($item['slug'] ?? '')), 'Katalog-Kennung ' . $repo); }

@@ -33,20 +33,8 @@ final class MGD_AI_Image_Labels_Admin_Page {
 		'imprint'       => 'Impressum',
 	);
 
-	/** Registriert den Menüpunkt erst im regulären WordPress-Admin-Menüaufbau. */
+	// Menü macht MGD Tools (Setup::tools in der Hauptdatei), Seiten-Kennung bleibt mgd-ai-image-labels
 	public static function register(): void {
-		add_action( 'admin_menu', array( self::class, 'register_media_page' ) );
-	}
-
-	/** Fügt genau eine Verwaltungsseite unter „Medien“ hinzu. */
-	public static function register_media_page(): void {
-		add_media_page(
-			'MGD AI Kennzeichnung WordPress',
-			'AI Kennzeichnung',
-			'manage_options',
-			self::PAGE_SLUG,
-			array( self::class, 'render_page' )
-		);
 	}
 
 	/**
@@ -92,13 +80,7 @@ final class MGD_AI_Image_Labels_Admin_Page {
 
 	/** Liefert die URL eines sicheren, fest bekannten Tabs. */
 	private static function get_tab_url( string $tab ): string {
-		return add_query_arg(
-			array(
-				'page' => self::PAGE_SLUG,
-				'tab'  => $tab,
-			),
-			admin_url( 'upload.php' )
-		);
+		return add_query_arg( array( 'page' => self::PAGE_SLUG, 'tab' => $tab ), admin_url( 'admin.php' ) );
 	}
 
 	/** Liest nur sichere, vorgegebene Tab-Namen aus der URL. */

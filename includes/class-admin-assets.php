@@ -29,7 +29,7 @@ final class MGD_AI_Image_Labels_Admin_Assets {
 	 * @param string $hook_suffix Aktueller WordPress-Admin-Hook.
 	 */
 	public static function enqueue( string $hook_suffix ): void {
-		if ( 'media_page_mgd-ai-image-labels' !== $hook_suffix ) {
+		if ( ! str_ends_with( $hook_suffix, '_page_mgd-ai-image-labels' ) ) {
 			return;
 		}
 

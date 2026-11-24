@@ -1,19 +1,16 @@
 <?php
 /**
- * Plugin Name:       MGD AI Kennzeichnung WordPress
- * Plugin URI:         https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress
- * Description:       Sichere Grundlage für die transparente Kennzeichnung von KI-bezogenen Bildern in der WordPress-Mediathek.
- * Version:            1.1.1
- * Requires at least:  6.0
- * Requires PHP:       8.1
- * Author:             Michael Gahn DESIGN
- * Author URI:         https://michael-gahn.de/
- * Text Domain:        mgd-ai-image-labels
- * Update URI:         https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress
- *
- * Das Plugin ergänzt die WordPress-Mediathek um eine sichere Auswahl für
- * KI-Kennzeichnungen und gibt sie bei passenden WordPress- und Divi-5-Bildern
- * lokal sowie barrierefrei aus. Inhalte und Divi-Layouts werden nicht gespeichert.
+ * Plugin Name:       MGD AI Kennzeichnung
+ * Plugin URI:        https://theme.michael-gahn.de/plugins/plugin-ki-kennzeichnung-wordpress
+ * Description:       Kennzeichnet KI-bezogene Bilder in der Mediathek transparent und barrierefrei.
+ * Version:           1.1.1
+ * Requires at least: 6.5
+ * Requires PHP:      8.1
+ * Author:            Michael Gahn DESIGN
+ * Author URI:        https://michael-gahn.de
+ * License:           GPL-2.0-or-later
+ * Update URI:        https://github.com/MichaelGahnDESIGN/MGD-AI-Kennzeichnung-WordPress
+ * Text Domain:       mgd-ai-image-labels
  */
 
 declare(strict_types=1);
@@ -45,13 +42,23 @@ spl_autoload_register( static function ( string $class ): void {
 	}
 } );
 
-// Updater vom Baukasten, startet auch den Install-Melder - alte GitHub-Updater (eigener + Admin-Tools) sind abgeschaltet
-MGD_AI_Image_Labels_Plugin::$updater = \Mgd\AiImageLabels\Kit\Platform\WordPress\Setup::updater( __FILE__, MGD_AI_Image_Labels_Plugin::PRODUCT, 'wordpress', MGD_AI_IMAGE_LABELS_VERSION, 'MGD AI Kennzeichnung', admin_url( 'upload.php?page=' . MGD_AI_Image_Labels_Plugin::INFO_PAGE ) );
-// Reste vom alten Updater wegräumen, 1x pro Version
-\Mgd\AiImageLabels\Kit\Platform\WordPress\Setup::cleanupLegacy( MGD_AI_Image_Labels_Plugin::PRODUCT, MGD_AI_IMAGE_LABELS_VERSION, array( 'mgd_ail_github_latest_release', 'mgd_admin_release_mgd-ai-image-labels' ) );
+// Updater + MGD Tools Menü vom Baukasten (startet auch den Install-Melder)
+use Mgd\AiImageLabels\Kit\Platform\WordPress\Setup;
+use Mgd\AiImageLabels\Kit\Platform\WordPress\Tools;
 
-// Link Einstellungen in der Plugin-Liste (kam vorher von den Admin-Tools)
-add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), static function ( array $links ): array {
-	array_unshift( $links, '<a href="' . esc_url( admin_url( 'upload.php?page=mgd-ai-image-labels' ) ) . '">Einstellungen</a>' );
-	return $links;
-} );
+MGD_AI_Image_Labels_Plugin::$updater = Setup::updater( __FILE__, 'mgd-ai-kennzeichnung-wordpress', 'wordpress', MGD_AI_IMAGE_LABELS_VERSION, 'MGD AI Kennzeichnung', Tools::url() );
+// Reste vom alten Updater wegräumen, 1x pro Version
+Setup::cleanupLegacy( 'mgd-ai-kennzeichnung-wordpress', MGD_AI_IMAGE_LABELS_VERSION, array( 'mgd_ail_github_latest_release', 'mgd_admin_release_mgd-ai-image-labels' ) );
+
+// Einstellungsseite unter MGD Tools - Seiten-Kennung bleibt mgd-ai-image-labels
+Setup::tools( __FILE__, 'mgd-ai-kennzeichnung-wordpress', 'wordpress', MGD_AI_IMAGE_LABELS_VERSION, 'MGD AI Kennzeichnung', MGD_AI_Image_Labels_Plugin::$updater, array(
+	'slug'     => 'plugin-ki-kennzeichnung-wordpress',
+	'repo'     => 'MGD-AI-Kennzeichnung-WordPress',
+	'settings' => array(
+		'page'   => 'mgd-ai-image-labels',
+		'title'  => 'AI Kennzeichnung',
+		'cap'    => 'manage_options',
+		'render' => array( 'MGD_AI_Image_Labels_Admin_Page', 'render_page' ),
+	),
+	'license'  => false,
+) );
