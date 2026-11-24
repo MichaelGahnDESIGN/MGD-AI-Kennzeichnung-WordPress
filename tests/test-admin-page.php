@@ -50,12 +50,6 @@ function add_action( string $hook, callable $callback ): void {
 	$GLOBALS['mgd_ail_admin_page_test']['actions'][ $hook ] = $callback;
 }
 
-function add_media_page( string $page_title, string $menu_title, string $capability, string $menu_slug, callable $callback ): string {
-	$GLOBALS['mgd_ail_admin_page_test']['page'] = compact( 'page_title', 'menu_title', 'capability', 'menu_slug', 'callback' );
-
-	return 'media_page_' . $menu_slug;
-}
-
 /** @return array<string, string> */
 function get_option( string $option, $default = false ) {
 	if ( 'mgd_ail_display_options' !== $option ) {
@@ -155,10 +149,9 @@ function mgd_ail_admin_assert_contains( string $needle, string $haystack, string
 	}
 }
 
+// Menü macht MGD Tools, die Klasse legt selbst keinen Menüpunkt mehr an
 MGD_AI_Image_Labels_Admin_Page::register();
-call_user_func( $GLOBALS['mgd_ail_admin_page_test']['actions']['admin_menu'] );
-mgd_ail_admin_assert_same( 'MGD AI Kennzeichnung WordPress', $GLOBALS['mgd_ail_admin_page_test']['page']['page_title'], 'Die zentrale Seite verwendet den vereinbarten Seitentitel.' );
-mgd_ail_admin_assert_same( 'mgd-ai-image-labels', $GLOBALS['mgd_ail_admin_page_test']['page']['menu_slug'], 'Die Verwaltungsseite verwendet einen festen, konfliktarmen Medien-Slug.' );
+mgd_ail_admin_assert_same( false, isset( $GLOBALS['mgd_ail_admin_page_test']['actions']['admin_menu'] ), 'Die Verwaltungsseite hängt kein eigenes admin_menu an.' );
 
 $_GET['tab'] = '<script>unbekannt</script>';
 ob_start();

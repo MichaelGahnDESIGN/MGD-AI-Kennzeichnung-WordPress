@@ -23,7 +23,6 @@ final class MGD_AI_Image_Labels_Plugin {
 	public const PRODUCT = 'mgd-ai-kennzeichnung-wordpress';
 
 	// Seite "Info und Updates" unter Medien
-	public const INFO_PAGE = 'mgd-ai-image-labels-info';
 
 	// Updater vom Baukasten, setzt die Haupt-Datei - fürs Dashboard
 	public static ?\Mgd\AiImageLabels\Kit\Platform\WordPress\Updater $updater = null;
@@ -51,7 +50,6 @@ final class MGD_AI_Image_Labels_Plugin {
 		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-admin-page.php';
 		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-admin-assets.php';
 		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-ai-philosophy.php';
-		require_once MGD_AI_IMAGE_LABELS_DIR . 'includes/class-info-page.php';
 
 		// Die Komponenten ergänzen Felder in der Mediathek und eine rein lokale,
 		// nicht destruktive Ausgabe bei WordPress-Bildern. Divi-Inhalte, Header,
@@ -66,9 +64,5 @@ final class MGD_AI_Image_Labels_Plugin {
 		MGD_AI_Image_Labels_AI_Philosophy::register();
 		MGD_AI_Image_Labels_Plugin_Presentation::register();
 		MGD_AI_Image_Labels_Plugin_List_Icon::register();
-		// Info, Updates, Weitere Plugins, Installation melden - vom Baukasten
-		MGD_AI_Image_Labels_Info_Page::register();
-
-		// alter GitHub-Updater ab 1.1.0 nicht mehr angemeldet, alte Katalogseite (V4) ab 1.1.1 ganz raus
 	}
 }
