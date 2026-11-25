@@ -1,13 +1,13 @@
 # Änderungsprotokoll
 
-## Unveröffentlicht (kommt mit 2.1.1)
+## [2.1.1] - 2026-11-25
 
-- Alles unter **MGD Tools**: Das Plugin hat kein eigenes Menü mehr. Die
-  Einstellungen stehen unter **MGD Tools → AI Kennzeichnung**, Updates,
-  Lizenz und Weitere Plugins zentral unter **MGD Tools**.
-- Plugin-Kopf nach Norm („MGD AI Kennzeichnung“) und Icons für die Plugin-Liste.
-- Alter Update-Baustein (Admin-Tools) und alter GitHub-Updater sind entfernt.
-- Baukasten 1.12.1.
+- Gemeinsame Verwaltung unter **MGD Tools**: Das Plugin hat kein eigenes Menü
+  mehr. Die Einstellungen stehen unter **MGD Tools → AI Kennzeichnung**,
+  Updates, Lizenz und Weitere Plugins zentral unter **MGD Tools**.
+- Einheitliche Darstellung, Plugin-Kopf nach Norm und Icons in der Plugin-Liste.
+- Alter Update-Baustein und alter GitHub-Updater sind entfernt.
+- Kennzeichnungen an den Bildern und alle Einstellungen bleiben unverändert.
 
 ## 1.1.1 – 22.11.2026
 

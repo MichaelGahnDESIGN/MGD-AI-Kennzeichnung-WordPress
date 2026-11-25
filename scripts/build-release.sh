@@ -10,7 +10,7 @@
 
 set -euo pipefail
 
-release_version="${1:-1.1.1}"
+release_version="${1:-2.1.1}"
 project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 output_dir="${project_root}/dist"
 package_name="mgd-ai-image-labels-${release_version}.zip"
@@ -35,6 +35,10 @@ for entry in assets includes views mgd-ai-image-labels.php uninstall.php README.
 
 	cp -R "${project_root}/${entry}" "${package_root}/"
 done
+
+# Dateirechte im ZIP vereinheitlichen (Dateien 644, Ordner 755), sonst 403 bei Icons auf manchen Servern
+find "${package_root}" -type d -exec chmod 755 {} +
+find "${package_root}" -type f -exec chmod 644 {} +
 
 # Zusätzliche Finder-Metadaten oder Archivreste werden vor dem Packen entfernt.
 find "${package_root}" -name '.DS_Store' -delete
