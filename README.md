@@ -258,21 +258,21 @@ git diff --check
 ### Repository-Umbenennung abgeschlossen
 
 Das öffentliche Repository heißt jetzt
-`MGD-AI-Kennzeichnung-WordPress`. Die Übergangsversion 2.1.1 hat den neuen
+`MGD-AI-Kennzeichnung-WordPress`. Die Übergangsversion 2.1.4 hat den neuen
 Update-Kanal vorbereitet; ab 1.0.3 werden reguläre Updates über diese Adresse
 veröffentlicht. Der Plugin-Ordner `mgd-ai-image-labels`, die Metaschlüssel und
 alle Kennzeichnungswerte bleiben unverändert.
 
-### Updates ab Version 2.1.1
+### Updates ab Version 2.1.4
 
-Ab Version 2.1.1 kommen Updates von **theme.michael-gahn.de**:
+Ab Version 2.1.4 kommen Updates von **theme.michael-gahn.de**:
 
 1. WordPress fragt dort nach, ob es eine neue Version gibt.
 2. Gibt es eine, steht sie wie bei jedem Plugin unter **Dashboard → Aktualisierungen**.
 3. Die ZIP-Datei kommt aus dem GitHub-Release dieses Repositorys.
 4. Vor der Installation prüft das Plugin Größe und SHA-256-Prüfsumme. Stimmt etwas nicht, wird nichts installiert.
 
-### MGD Tools (ab Version 2.1.3)
+### MGD Tools (ab Version 2.1.4)
 
 Im Menü **MGD Tools** siehst du alle MGD-Plugins an einem Ort. Dort kannst du dieses Plugin **aktivieren und deaktivieren** und siehst, ob eine **Lizenz** nötig ist (Free oder Pro) und ob sie gültig ist.
 
@@ -375,7 +375,7 @@ Tel.: +49 (0) 151 59156639
 E-Mail: Anfrage@Michael-Gahn.de
 <!-- /MGD-LEGAL -->
 
-## Version 2.1.1 – Neue Ansicht „Weitere Plugins“
+## Version 2.1.4 – Neue Ansicht „Weitere Plugins“
 
 Auf der Seite **Medien → Info und Updates** gibt es eine neue Ansicht „Weitere Plugins“:
 
@@ -386,11 +386,11 @@ Auf der Seite **Medien → Info und Updates** gibt es eine neue Ansicht „Weite
 
 Die alte Seite „Weitere Plugins“ gibt es nicht mehr. Deine Einstellungen bleiben, wie sie sind.
 
-## Version 2.1.1 – Updates von theme.michael-gahn.de
+## Version 2.1.4 – Updates von theme.michael-gahn.de
 
 Updates kommen jetzt von theme.michael-gahn.de (mit Prüfsumme). Neue Seite **Medien → Info und Updates**. Die Installation meldet sich an, abschaltbar. Mehr dazu unter „Releases und Updates“.
 
-## Plugin-Icon – Version 2.1.1
+## Plugin-Icon – Version 2.1.4
 
 Eigenes lokales Icon in der WordPress-Pluginliste. Die Grafik ist im Release-Paket enthalten; keine externen Bilddienste und keine neuen gespeicherten Daten. Vorhandene Funktionen und Einstellungen bleiben unverändert.
 
