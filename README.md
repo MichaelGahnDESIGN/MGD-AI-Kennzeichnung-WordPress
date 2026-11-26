@@ -272,6 +272,10 @@ Ab Version 2.1.1 kommen Updates von **theme.michael-gahn.de**:
 3. Die ZIP-Datei kommt aus dem GitHub-Release dieses Repositorys.
 4. Vor der Installation prüft das Plugin Größe und SHA-256-Prüfsumme. Stimmt etwas nicht, wird nichts installiert.
 
+### MGD Tools (ab Version 2.1.3)
+
+Im Menü **MGD Tools** siehst du alle MGD-Plugins an einem Ort. Dort kannst du dieses Plugin **aktivieren und deaktivieren** und siehst, ob eine **Lizenz** nötig ist (Free oder Pro) und ob sie gültig ist.
+
 Automatische Updates bleiben aus, bis du sie selbst einschaltest. Mach vor jedem Update eine Sicherung, zum Beispiel mit UpdraftPlus.
 
 Jede Version hat einen Git-Tag im Format `vX.Y.Z` und ein ZIP im Release. Der oberste Ordner im ZIP heißt immer `mgd-ai-image-labels`.
